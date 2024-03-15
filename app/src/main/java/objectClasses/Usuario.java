@@ -5,6 +5,7 @@ import java.util.Date;
 public class Usuario {
     //atributos de usuario
     private int id;
+    private int idEmpresa;
     private String email;
     private String nombre;
     private String contrasegna;
@@ -16,8 +17,11 @@ public class Usuario {
 
 
     //constructors
-    public Usuario(int id, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
+
+
+    public Usuario(int id, int idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
         this.id = id;
+        this.idEmpresa = idEmpresa;
         this.email = email;
         this.nombre = nombre;
         this.contrasegna = contrasegna;
@@ -45,6 +49,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
+                ", idEmpresa=" + idEmpresa +
                 ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", contrasegna='" + contrasegna + '\'' +
@@ -58,13 +63,20 @@ public class Usuario {
 
 
     //gettersAndSetters
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(int idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 
     public String getEmail() {
