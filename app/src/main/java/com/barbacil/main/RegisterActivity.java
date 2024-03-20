@@ -1,16 +1,21 @@
 package com.barbacil.main;
 
-import static connections.Registrarse.registrarUsuario;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import objectClasses.Usuario;
 import connections.Registrarse;
@@ -25,6 +30,12 @@ public class RegisterActivity extends AppCompatActivity {
     String opcionGenero;
 
     Usuario usuario;
+
+
+
+    private final String supabaseUrl = "https://vlbsmlsjguviymvrzeqe.supabase.co";
+    private final String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsYnNtbHNqZ3V2aXltdnJ6ZXFlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMDUzMDU3NywiZXhwIjoyMDI2MTA2NTc3fQ.SbdvAkaVbxXUgH7txb0x5Cnci4wMpyfSK6zqTq_Dqz4";
+    Registrarse supabaseClient = new Registrarse(supabaseUrl, apiKey);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +79,17 @@ public class RegisterActivity extends AppCompatActivity {
                 //TODO falta añadir algo para que la aplicacion registre al usuario en la base de datos y cambie de pantalla con la sesion iniciada
                 usuario = new Usuario(contenidoEmail, contenidoNombre, contenidoContrasegna,contenidoEdad,opcionGenero);
 
-                registrarUsuario(contenidoEmail,contenidoNombre,contenidoContrasegna,contenidoEdad,opcionGenero );
+                supabaseClient.insertUser("0", contenidoEmail, contenidoNombre, contenidoContrasegna, contenidoEdad, opcionGenero, false, 0, 0, isSuccess -> {
+                    runOnUiThread(() -> { // Asegurándonos de que el Toast se muestre en el hilo principal
+                        if (isSuccess) {
+                            Toast.makeText(RegisterActivity.this, "Usuario insertado con éxito", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Error al insertar usuario", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                });
+
+
             }
         });
         /////////////////////////////////////////////////////
@@ -86,5 +107,25 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         //////////////////////////////////////////////////////
+    }
+
+    //metodo para registrar
+    private void registrarUsuarioAsync() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() -> {
+            // Operación de red en un hilo secundario
+            final boolean isAvailable = supabaseClient.pingDatabase();
+
+            handler.post(() -> {
+                // Actualizar UI en el hilo principal
+                if (isAvailable) {
+                    System.out.println("Usuario registrado con exito.");
+                } else {
+                    System.out.println("Error al registrar usuario.");
+                }
+            });
+        });
     }
 }

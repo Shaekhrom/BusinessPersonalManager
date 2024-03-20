@@ -5,7 +5,7 @@ import java.util.Date;
 public class Usuario {
     //atributos de usuario
     private int id;
-    private int idEmpresa;
+    private String idEmpresa;
     private String email;
     private String nombre;
     private String contrasegna;
@@ -19,7 +19,7 @@ public class Usuario {
     //constructors
 
 
-    public Usuario(int id, int idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
+    public Usuario(int id, String idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
         this.id = id;
         this.idEmpresa = idEmpresa;
         this.email = email;
@@ -71,11 +71,11 @@ public class Usuario {
         this.id = id;
     }
 
-    public int getIdEmpresa() {
+    public String getIdEmpresa() {
         return idEmpresa;
     }
 
-    public void setIdEmpresa(int idEmpresa) {
+    public void setIdEmpresa(String idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
 
