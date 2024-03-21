@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- permisos para la base de datos -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,18 @@
         android:theme="@style/Theme.BusinessPersonalManager"
         tools:targetApi="31">
         <activity
+            android:name=".AdminPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CompanyCreatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CompanySelectorActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -22,9 +36,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-
     </application>
 
-    <!-- permisos para la base de datos-->
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
