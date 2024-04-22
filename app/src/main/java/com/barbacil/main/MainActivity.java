@@ -129,9 +129,9 @@ public class MainActivity extends AppCompatActivity {
             handler.post(() -> {
                 // Actualizar UI en el hilo principal
                 if (isAvailable) {
-                    System.out.println("La base de datos está disponible.");
+                    Toast.makeText(MainActivity.this, "La base de datos esta disponible", Toast.LENGTH_SHORT).show();
                 } else {
-                    System.out.println("No se pudo establecer conexión con la base de datos.");
+                    Toast.makeText(MainActivity.this, "La base de datos no esta disponible", Toast.LENGTH_SHORT).show();
                 }
             });
         });
