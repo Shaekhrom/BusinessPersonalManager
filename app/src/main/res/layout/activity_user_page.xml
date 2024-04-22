@@ -4,6 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".UserPageActivity">
+
+    <Button
+        android:id="@+id/botonEventos"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="44dp"
+        android:text="Eventos"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+
+    <Button
+        android:id="@+id/botonJornada"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="17dp"
+        android:text="Registro de jornada"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonEventos" />
+
+    <Button
+        android:id="@+id/botonChat"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="13dp"
+        android:text="Chat"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonJornada" />
+
+    <Button
+        android:id="@+id/botonPuntuacion"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="16dp"
+        android:text="Puntuacion"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonChat" />
+
+    <Button
+        android:id="@+id/botonAjustes"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="17dp"
+        android:text="Ajustes"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonPuntuacion" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp"
+        android:text="B.P.M"
+        android:textColor="@color/color_dorado"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botonSalir"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="50dp"
+        android:text="Salir"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

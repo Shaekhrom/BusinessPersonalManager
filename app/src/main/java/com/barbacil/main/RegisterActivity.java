@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import objectClasses.Usuario;
-import connections.Registrarse;
+import connections.Conexion;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private final String supabaseUrl = "https://vlbsmlsjguviymvrzeqe.supabase.co";
     private final String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsYnNtbHNqZ3V2aXltdnJ6ZXFlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMDUzMDU3NywiZXhwIjoyMDI2MTA2NTc3fQ.SbdvAkaVbxXUgH7txb0x5Cnci4wMpyfSK6zqTq_Dqz4";
-    Registrarse supabaseClient = new Registrarse(supabaseUrl, apiKey);
+    Conexion supabaseClient = new Conexion(supabaseUrl, apiKey);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,25 +107,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         //////////////////////////////////////////////////////
+
+
     }
 
-    //metodo para registrar
-    private void registrarUsuarioAsync() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
 
-        executor.execute(() -> {
-            // Operación de red en un hilo secundario
-            final boolean isAvailable = supabaseClient.pingDatabase();
 
-            handler.post(() -> {
-                // Actualizar UI en el hilo principal
-                if (isAvailable) {
-                    System.out.println("Usuario registrado con exito.");
-                } else {
-                    System.out.println("Error al registrar usuario.");
-                }
-            });
-        });
-    }
+
 }
