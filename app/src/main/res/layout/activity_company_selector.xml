@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textContrasegna" />
 
     <Button
-        android:id="@+id/buttonUnirse"
+        android:id="@+id/botonUnirseAEmpresa"
         android:layout_width="242dp"
         android:layout_height="46dp"
         android:layout_marginStart="86dp"
@@ -78,14 +78,15 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasegna" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/botonCrearEmpresa"
         android:layout_width="236dp"
         android:layout_height="48dp"
-        android:layout_marginStart="86dp"
+        android:layout_marginStart="92dp"
         android:layout_marginTop="49dp"
         android:layout_marginBottom="120dp"
         android:text="Crear empresa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonUnirse" />
+        app:layout_constraintTop_toBottomOf="@+id/botonUnirseAEmpresa"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

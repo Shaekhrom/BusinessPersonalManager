@@ -27,6 +27,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Conexion {
     private static String supabaseUrl;
     private static String apiKey;
+    private static boolean registradoEnEmpresa = false;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final OkHttpClient client = new OkHttpClient();
@@ -65,7 +66,7 @@ public class Conexion {
 
         // Consulta a la base de datos para obtener todos los usuarios
         Request request = new Request.Builder()
-                .url(supabaseUrl + "/rest/v1/usuario?select=email,contrasena")
+                .url(supabaseUrl + "/rest/v1/usuario?select=email,contrasena,idempresa")
                 .addHeader("apikey", apiKey)
                 .build();
 
@@ -84,9 +85,15 @@ public class Conexion {
                 JSONObject usuario = usuarios.getJSONObject(i);
                 String emailDB = usuario.getString("email");
                 String contrasenaDB = usuario.getString("contrasena");
+                String idEmpresa = usuario.getString("idempresa");
 
                 // Verificar si las credenciales coinciden
                 if (email.equals(emailDB) && contrasena.equals(contrasenaDB)) {
+                    if (idEmpresa.equals("0")){
+                        registradoEnEmpresa = false;
+                    }else{
+                        registradoEnEmpresa = true;
+                    }
                     return true; // Las credenciales son válidas
                 }
             }
@@ -144,6 +151,18 @@ public class Conexion {
         });
     }
     ////////////////////////////////////////////////////////////////
+
+
+
+    //////////////////////////////////////////////////////////////
+    //si el String id de la BBDD del usuario es igual a 0 este metodo devolvera false, sino true
+    public static boolean empresaTrigger(){
+        if (registradoEnEmpresa){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 

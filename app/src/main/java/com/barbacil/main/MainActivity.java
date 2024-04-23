@@ -94,10 +94,20 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                // Iniciar sesion si ha devuelto true
                                 if (inicioSesionExitoso) {
-                                    // Iniciar sesion si ha devuelto true
-                                    Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
-                                    startActivity(intent);
+
+                                    //si el trigger es igual a false, (no empresa), lo lleva al selector de empresas, sino a la user page
+                                    if(!Conexion.empresaTrigger()){
+
+                                        Intent intent = new Intent(MainActivity.this, CompanySelectorActivity.class);
+                                        startActivity(intent);
+                                    }else{
+
+                                        Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
+                                        startActivity(intent);
+                                    }
+
                                 } else {
                                     // Mostrar un mensaje de error si el inicio de sesión fallo
                                     Toast.makeText(MainActivity.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();

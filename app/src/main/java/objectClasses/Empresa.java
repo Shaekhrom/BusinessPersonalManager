@@ -6,29 +6,18 @@ public class Empresa {
     //atributos de objeto
     private String id;
     private String nombre;
-    private ArrayList<String>listaAdministradores;
-    private ArrayList<String>listaEmpleados;
+    private String contrasenaEmpresa;
+    private String sector;
+    private String detalles;
 
-    //constructor del objeto empresa
-    public Empresa(String id, String nombre, ArrayList<String> listaAdministradores, ArrayList<String> listaEmpleados) {
+
+    public Empresa(String id, String nombre, String contrasenaEmpresa, String sector, String detalles) {
         this.id = id;
         this.nombre = nombre;
-        this.listaAdministradores = listaAdministradores;
-        this.listaEmpleados = listaEmpleados;
+        this.contrasenaEmpresa = contrasenaEmpresa;
+        this.sector = sector;
+        this.detalles = detalles;
     }
-
-    //toString
-    @Override
-    public String toString() {
-        return "Empresa{" +
-                "id='" + id + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", listaAdministradores=" + listaAdministradores +
-                ", listaEmpleados=" + listaEmpleados +
-                '}';
-    }
-
-    //getters y setters
 
     public String getId() {
         return id;
@@ -46,19 +35,27 @@ public class Empresa {
         this.nombre = nombre;
     }
 
-    public ArrayList<String> getListaAdministradores() {
-        return listaAdministradores;
+    public String getContrasenaEmpresa() {
+        return contrasenaEmpresa;
     }
 
-    public void setListaAdministradores(ArrayList<String> listaAdministradores) {
-        this.listaAdministradores = listaAdministradores;
+    public void setContrasenaEmpresa(String contrasenaEmpresa) {
+        this.contrasenaEmpresa = contrasenaEmpresa;
     }
 
-    public ArrayList<String> getListaEmpleados() {
-        return listaEmpleados;
+    public String getSector() {
+        return sector;
     }
 
-    public void setListaEmpleados(ArrayList<String> listaEmpleados) {
-        this.listaEmpleados = listaEmpleados;
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
     }
 }
