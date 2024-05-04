@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".CompanyCreatorActivity">
 
     <EditText
@@ -15,6 +16,7 @@
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textContrasegna2" />
@@ -26,6 +28,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="29dp"
         android:text="Sector de la empresa"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasegna2" />
@@ -39,6 +42,7 @@
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSector" />
@@ -50,6 +54,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="28dp"
         android:text="Contraseña de la empresa:"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre2" />
@@ -61,6 +66,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="23dp"
         android:text="Nombre de la empresa:"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textCrearEmpresa" />
@@ -74,6 +80,7 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNombre2" />
@@ -85,6 +92,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="52dp"
         android:text="Crear una empresa"
+        android:textColor="#FDD835"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -96,6 +104,8 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="27dp"
         android:text="Crear empresa"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
@@ -107,6 +117,8 @@
         android:layout_marginTop="27dp"
         android:layout_marginBottom="66dp"
         android:text="Volver"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonCrearEmpresa"
         app:layout_constraintTop_toBottomOf="@+id/editTextText"
@@ -119,6 +131,7 @@
         android:layout_marginStart="59dp"
         android:layout_marginTop="19dp"
         android:text="Detalles:"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSector" />
@@ -136,6 +149,7 @@
         android:maxLines="5"
         android:minLines="2"
         android:singleLine="false"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDetalles" />
 </androidx.constraintlayout.widget.ConstraintLayout>
