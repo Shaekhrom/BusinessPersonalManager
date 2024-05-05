@@ -8,7 +8,7 @@
     tools:context=".CompanyCreatorActivity">
 
     <EditText
-        android:id="@+id/editTextContrasegna2"
+        android:id="@+id/contrasegnaEmpresaCE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -31,10 +31,10 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContrasegna2" />
+        app:layout_constraintTop_toBottomOf="@+id/contrasegnaEmpresaCE" />
 
     <EditText
-        android:id="@+id/editTextSector"
+        android:id="@+id/sectorEmpresaCE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -57,7 +57,7 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombre2" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmpresaET" />
 
     <TextView
         android:id="@+id/textNombre2"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textCrearEmpresa" />
 
     <EditText
-        android:id="@+id/editTextNombre2"
+        android:id="@+id/nombreEmpresaET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
@@ -107,10 +107,10 @@
         android:textColor="@color/black"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE" />
 
     <Button
-        android:id="@+id/buttonVolver"
+        android:id="@+id/buttonVolverCE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -121,7 +121,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonCrearEmpresa"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -134,10 +134,10 @@
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSector" />
+        app:layout_constraintTop_toBottomOf="@+id/sectorEmpresaCE" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/detallesEmpresaCE"
         android:layout_width="280dp"
         android:layout_height="101dp"
         android:layout_marginStart="58dp"

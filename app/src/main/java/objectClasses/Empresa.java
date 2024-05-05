@@ -19,6 +19,13 @@ public class Empresa {
         this.detalles = detalles;
     }
 
+    public Empresa(String nombre, String contrasenaEmpresa, String sector, String detalles) {
+        this.nombre = nombre;
+        this.contrasenaEmpresa = contrasenaEmpresa;
+        this.sector = sector;
+        this.detalles = detalles;
+    }
+
     public String getId() {
         return id;
     }

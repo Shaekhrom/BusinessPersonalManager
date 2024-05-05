@@ -1,6 +1,5 @@
 package connections;
 
-public interface UserInsertCallback {
+public interface UserUpdateCallback {
     void onCompleted(boolean isSuccess);
-
 }

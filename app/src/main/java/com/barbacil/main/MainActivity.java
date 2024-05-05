@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import connections.Conexion;
 import connections.UserInsertCallback;
+import objectClasses.Usuario;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,13 +32,15 @@ public class MainActivity extends AppCompatActivity {
 
     EditText editTextEmail, editTextcontrasegna;
 
-
-
+    public static String idUsuarioFinal;
+    static Usuario usuarioAuxiliar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        HideUI.setImmersiveMode(this);
 
         // Asociamos variable con botón por id
         botonRegistro = findViewById(R.id.registerButtonMain);
@@ -84,11 +87,16 @@ public class MainActivity extends AppCompatActivity {
                 String email = editTextEmail.getText().toString();
                 String contrasegna = editTextcontrasegna.getText().toString();
 
+                usuarioAuxiliar = new Usuario(email, contrasegna);
+
+
+
                 // Crear un nuevo hilo para realizar la operación de inicio de sesion
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         // Llamar al método de inicio de sesión en la clase Conexion
+                        idUsuarioFinal = Conexion.obtenerIdUsuario(email,contrasegna);
                         boolean inicioSesionExitoso = supabaseClient.iniciarSesion(email, contrasegna);
 
                         runOnUiThread(new Runnable() {
@@ -148,7 +156,9 @@ public class MainActivity extends AppCompatActivity {
     }
     ///////////////////////////////////////////////////////////////
 
-    //iniciar sesion
+    public static Usuario conseguirUsuario(){
+        return usuarioAuxiliar;
+    }
 
 
 

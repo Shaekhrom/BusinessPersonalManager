@@ -42,6 +42,11 @@ public class Usuario {
 
     }
 
+    public Usuario(String email, String contrasegna) {
+        this.email = email;
+        this.contrasegna = contrasegna;
+    }
+
 
     //toString
 

@@ -7,7 +7,7 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/botonVolverJE"
         android:layout_width="236dp"
         android:layout_height="48dp"
         android:layout_marginStart="84dp"

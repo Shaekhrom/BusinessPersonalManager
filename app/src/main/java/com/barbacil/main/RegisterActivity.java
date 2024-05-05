@@ -42,6 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        HideUI.setImmersiveMode(this);
+
         //seccion boton volver//
         // asociamos variable con boton por id
         botonVolver = findViewById(R.id.backButtonRegister);
@@ -76,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
                 String contenidoContrasegna = contrasegnaET.getText().toString();
                 String contenidoEdadString = edadET.getText().toString();
                 int contenidoEdad = Integer.parseInt(contenidoEdadString);
-                //TODO falta añadir algo para que la aplicacion registre al usuario en la base de datos y cambie de pantalla con la sesion iniciada
                 usuario = new Usuario(contenidoEmail, contenidoNombre, contenidoContrasegna,contenidoEdad,opcionGenero);
 
                 supabaseClient.insertUser("0", contenidoEmail, contenidoNombre, contenidoContrasegna, contenidoEdad, opcionGenero, false, 0, 0, isSuccess -> {
