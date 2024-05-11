@@ -11,17 +11,14 @@
         android:id="@+id/emailLogin"
         style="@style/textoBlanco"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="51dp"
         android:layout_marginStart="70dp"
-        android:layout_marginEnd="91dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="text"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/contrasegnaText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textoemail" />
 
     <TextView
         android:id="@+id/textoemail"
@@ -30,12 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="285dp"
-        android:layout_marginBottom="8dp"
         android:text="E-mail"
-        app:layout_constraintBottom_toTopOf="@+id/emailLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -43,15 +36,12 @@
         android:id="@+id/contrasegnaLogin"
         style="@style/textoBlanco"
         android:layout_width="250dp"
-        android:layout_height="43dp"
+        android:layout_height="52dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="91dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="text"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contrasegnaText" />
 
@@ -60,13 +50,15 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="83dp"
         android:backgroundTint="@color/white"
-        android:text="Log In"
+        android:text="Iniciar sesión"
         android:textColor="@color/black"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recordar" />
+        app:layout_constraintTop_toBottomOf="@+id/contrasegnaLogin" />
 
     <TextView
         android:id="@+id/contrasegnaText"
@@ -74,12 +66,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginEnd="252dp"
-        android:layout_marginBottom="42dp"
+        android:layout_marginTop="14dp"
         android:text="Contraseña"
-        app:layout_constraintBottom_toTopOf="@+id/contrasegnaLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     <Button
         android:id="@+id/botonRegistroMain"
@@ -87,25 +78,14 @@
         android:layout_height="50dp"
         android:layout_marginStart="72dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="79dp"
         android:backgroundTint="@color/white"
-        android:text="Register"
+        android:text="Registrarse"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonLogin" />
-
-    <TextView
-        android:id="@+id/recordar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="207dp"
-        android:text="Remember password"
-        android:textColor="#818181"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contrasegnaLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/botonLogin" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -114,8 +94,6 @@
         android:layout_marginStart="51dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="51dp"
-        android:layout_marginBottom="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/textoemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -126,9 +104,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/white"
-        android:text="Test"
+        android:text="Comprobar disponibilidad \nde la aplicación"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

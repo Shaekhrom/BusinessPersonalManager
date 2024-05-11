@@ -107,28 +107,28 @@
         style="@style/textoBlanco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="33dp"
         android:layout_marginEnd="58dp"
-        android:text="Register"
-        android:textColor="@color/black"
+        android:layout_marginBottom="21dp"
         android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/backButtonRegister"
-        app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
+        android:text="Registrarse"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/backButtonRegister"
+        style="@style/textoBlanco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="58dp"
         android:layout_marginTop="33dp"
-        android:text="Back"
-        android:textColor="@color/black"
+        android:layout_marginBottom="21dp"
         android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup"
-        style="@style/textoBlanco"/>
+        app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
 
     <RadioGroup
         android:id="@+id/genderRadioGroup"
@@ -147,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="Male" />
+            android:text="Masc" />
 
         <RadioButton
             android:id="@+id/radioButton5"
@@ -155,14 +155,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            android:text="Female" />
+            android:text="Fem" />
 
         <RadioButton
             android:id="@+id/radioButton6"
             style="@style/textoBlanco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Other" />
+            android:text="Otro" />
     </RadioGroup>
 
     <EditText

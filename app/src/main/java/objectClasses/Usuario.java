@@ -269,6 +269,7 @@ public class Usuario {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    //(Crear empresa 5/5) y (Unirse a empresa 3/3)Actualizar idempresa en la tabla usuario
     public static void actualizarIdEmpresa(String email, String contrasena, String nuevoIdEmpresa, UsuarioUpdateCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 

@@ -32,7 +32,7 @@ public class CompanyCreatorActivity extends AppCompatActivity {
         HideUI.setImmersiveMode(this);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        //(Crear empresa 2/3)-Crear empresa
+        //(Crear empresa 2/5)-Crear empresa
         buttonCrearEmpresa= findViewById(R.id.buttonCrearEmpresa);
         nombreET = findViewById(R.id.nombreEmpresaET);
         contrasegnaET = findViewById(R.id.contrasegnaEmpresaCE);

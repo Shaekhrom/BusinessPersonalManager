@@ -46,15 +46,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textUnirse" />
 
     <EditText
-        android:id="@+id/editTextNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/nombreEmpresaUE"
+        android:layout_width="191dp"
+        android:layout_height="52dp"
         android:layout_marginStart="54dp"
         android:layout_marginTop="13dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        android:text="Name"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,24 +63,23 @@
         android:id="@+id/textContrasegna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
         android:text="Contraseña de la empresa:"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmpresaUE" />
 
     <EditText
-        android:id="@+id/editTextContrasegna"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/contrasegnaEmpresaUE"
+        android:layout_width="190dp"
+        android:layout_height="53dp"
         android:layout_marginStart="54dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="text"
-        android:text="Name"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +96,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContrasegna" />
+        app:layout_constraintTop_toBottomOf="@+id/contrasegnaEmpresaUE" />
 
     <Button
         android:id="@+id/botonCrearEmpresaJE"

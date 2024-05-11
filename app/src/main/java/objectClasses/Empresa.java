@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import connections.Conexion;
+import connections.EmpresaFetchCallback;
 import connections.EmpresaIdCallback;
 import connections.EmpresaInsertCallback;
 import okhttp3.MediaType;
@@ -87,7 +88,7 @@ public class Empresa {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //(Crear empresa x/x)Insertar empresa
+    ////(Crear empresa 3/5)-Insertar empresa
     public static void insertarEmpresa(Empresa empresa, EmpresaInsertCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 
@@ -138,7 +139,7 @@ public class Empresa {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //obtener id empresa
+    //(Crear empresa 4/5)obtener id empresa
     public static void obtenerIdEmpresa(String nombreEmpresa, String contrasegnaEmpresa, EmpresaIdCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 
@@ -185,6 +186,65 @@ public class Empresa {
             }
         }).start();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //(Unirse a empresa 2/3)obtener objeto empresa por id
+    public static void obtenerDatosEmpresa(String nombreEmpresa, String contrasegnaEmpresa, EmpresaFetchCallback callback) {
+        handler = new Handler(Looper.getMainLooper());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url(supabaseClient.getSupabaseUrl() + "/rest/v1/empresa?nombreempresa=eq." + nombreEmpresa + "&contrasenaempresa=eq." + contrasegnaEmpresa)
+                            .addHeader("apikey", supabaseClient.getApiKey())
+                            .build();
+
+                    Log.d("HTTP_DEBUG", "Enviando solicitud HTTP para obtener datos de empresa...");
+
+                    try (Response response = client.newCall(request).execute()) {
+                        if (response.isSuccessful()) {
+                            String responseData = response.body().string();
+                            JSONArray jsonArray = new JSONArray(responseData);
+
+                            if (jsonArray.length() > 0) {
+                                // Se encontró una empresa con el nombre y la contraseña proporcionados
+                                // Obtener los datos de la primera empresa en el JSONArray
+                                JSONObject empresaData = jsonArray.getJSONObject(0);
+                                String idEmpresa = empresaData.getString("idempresa");
+                                String nombreEmpresa = empresaData.getString("nombreempresa");
+                                String contrasenaEmpresa = empresaData.getString("contrasenaempresa");
+                                String sector = empresaData.getString("sector");
+                                String detalles = empresaData.getString("detalles");
+
+                                // Crear un objeto Empresa con los datos obtenidos
+                                Empresa empresa = new Empresa(idEmpresa, nombreEmpresa, contrasenaEmpresa, sector, detalles);
+
+                                // Llamar al método onEmpresaFetched del callback con el objeto Empresa
+                                handler.post(() -> callback.onEmpresaFetched(empresa));
+                            } else {
+                                // No se encontró ninguna empresa con el nombre y la contraseña proporcionados
+                                handler.post(() -> callback.onEmpresaFetchFailure("Credenciales incorrectas"));
+                            }
+                        } else {
+                            Log.d("HTTP_DEBUG", "Solicitud HTTP fallida: " + response.code());
+                            handler.post(() -> callback.onEmpresaFetchFailure("Error de red: " + response.code()));
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    handler.post(() -> callback.onEmpresaFetchFailure("Error interno: " + e.getMessage()));
+                }
+            }
+        }).start();
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
