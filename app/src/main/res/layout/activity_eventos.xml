@@ -7,55 +7,62 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/volverEVTV"
         android:layout_width="73dp"
         android:layout_height="70dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="36dp"
         android:text="↩️"
         android:textSize="48sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="38dp" />
-
-    <TextView
-        android:id="@+id/textViewAddCM"
-        android:layout_width="44dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="52dp"
-        android:text="➕"
-        android:textColor="#FFFFFF"
-        android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="351dp" />
-
-    <ListView
-        android:id="@+id/chatList"
-        android:layout_width="377dp"
-        android:layout_height="561dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloE" />
-
-    <TextView
-        android:id="@+id/textViewOptionsCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="52dp"
-        android:text="⚙️"
-        android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewTituloE"
+        android:id="@+id/agnadirEventosEVTV"
+        android:layout_width="44dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:text="➕"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listaDeEventosEVTV"
+        android:layout_width="377dp"
+        android:layout_height="561dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volverEVTV" />
+
+    <TextView
+        android:id="@+id/textViewOptionsEVTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="52dp"
+        android:text="⚙️"
+        android:textSize="34sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewTituloEVTV"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTituloEVTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:text="Eventos"
         android:textColor="#FDD835"
-        android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="145dp" />
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/volverEVTV"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

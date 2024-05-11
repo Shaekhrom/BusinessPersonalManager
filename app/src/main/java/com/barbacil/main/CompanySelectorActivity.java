@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import connections.Conexion;
 import connections.EmpresaFetchCallback;
-import connections.EmpresaIdCallback;
 import connections.UsuarioUpdateCallback;
 import objectClasses.Empresa;
 import objectClasses.Estatica;
@@ -32,7 +31,7 @@ public class CompanySelectorActivity extends AppCompatActivity {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //(Unirse a empresa 1/3)-Unirse a empresa
-        botonUnirseAEmpresa= findViewById(R.id.botonUnirseAEmpresa);
+        botonUnirseAEmpresa= findViewById(R.id.asdasd);
         nombreEmpresaUE = findViewById(R.id.nombreEmpresaUE);
         contrasegnaEmpresaUE = findViewById(R.id.contrasegnaEmpresaUE);
 
@@ -89,7 +88,7 @@ public class CompanySelectorActivity extends AppCompatActivity {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Volver
-        botonVolverJE= findViewById(R.id.botonVolverJE);
+        botonVolverJE= findViewById(R.id.botonVolverPT);
         botonVolverJE.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

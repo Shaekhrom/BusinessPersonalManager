@@ -8,25 +8,24 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EventosActivity extends AppCompatActivity {
-    TextView volverEVTV;
+public class ChatActivity extends AppCompatActivity {
+    TextView volverCT;
     Intent intent;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_eventos);
+        setContentView(R.layout.activity_chatmain);
         HideUI.setImmersiveMode(this);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Volver
-        volverEVTV = findViewById(R.id.volverEVTV);
-        volverEVTV.setOnClickListener(new View.OnClickListener() {
+        volverCT = findViewById(R.id.volverCT);
+        volverCT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Creamos intent para ir a otra actividad
-                intent = new Intent(EventosActivity.this, UserPageActivity.class);
+                intent = new Intent(ChatActivity.this, UserPageActivity.class);
 
                 // Inicia la actividad de eventos
                 startActivity(intent);

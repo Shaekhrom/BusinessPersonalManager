@@ -7,7 +7,7 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/botonVolverJE"
+        android:id="@+id/botonVolverPT"
         android:layout_width="236dp"
         android:layout_height="48dp"
         android:layout_marginStart="84dp"
@@ -23,11 +23,13 @@
         android:id="@+id/textNombre2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="83dp"
         android:text="🙂 🌟🌟🌟🌟⭐ 4/5"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="195dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
 
     <TextView
         android:id="@+id/textViewTitulo"
@@ -44,7 +46,9 @@
     <ListView
         android:layout_width="340dp"
         android:layout_height="315dp"
-        tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="275dp" />
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNombre2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

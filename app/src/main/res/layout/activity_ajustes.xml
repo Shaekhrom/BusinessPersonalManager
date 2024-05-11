@@ -7,79 +7,103 @@
     android:background="@color/black">
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/botonNotif"
         android:layout_width="242dp"
         android:layout_height="46dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/white"
         android:text="Notificaciones"
         android:textColor="@color/black"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="342dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textContrasegna" />
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/botonLenguaje"
         android:layout_width="242dp"
         android:layout_height="46dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="@color/white"
         android:text="Lenguaje"
         android:textColor="@color/black"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="409dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonNotif" />
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/botonSobreMi"
         android:layout_width="242dp"
         android:layout_height="46dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="85dp"
         android:backgroundTint="@color/white"
         android:text="Sobre Mi"
         android:textColor="@color/black"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="475dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonLenguaje" />
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/botonAyudaYSoporte"
         android:layout_width="242dp"
         android:layout_height="46dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="85dp"
         android:backgroundTint="@color/white"
         android:text="Ayuda y soporte"
         android:textColor="@color/black"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="540dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonSobreMi" />
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/botonVolverAJ"
         android:layout_width="242dp"
         android:layout_height="46dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="76dp"
         android:backgroundTint="@color/white"
         android:text="Volver"
         android:textColor="@color/black"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="609dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textContrasegna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="159dp"
         android:text="UserName"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="275dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="126dp"
         android:text="Ajustes"
         android:textColor="@color/color_dorado"
         android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +111,11 @@
         android:id="@+id/imageView2"
         android:layout_width="109dp"
         android:layout_height="100dp"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="135dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="151dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

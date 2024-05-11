@@ -8,7 +8,7 @@
     tools:context=".CompanySelectorActivity">
 
     <Button
-        android:id="@+id/botonVolverJE"
+        android:id="@+id/botonVolverPT"
         android:layout_width="236dp"
         android:layout_height="48dp"
         android:layout_marginStart="84dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textContrasegna" />
 
     <Button
-        android:id="@+id/botonUnirseAEmpresa"
+        android:id="@+id/asdasd"
         android:layout_width="242dp"
         android:layout_height="46dp"
         android:layout_marginStart="84dp"
@@ -109,5 +109,5 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonUnirseAEmpresa" />
+        app:layout_constraintTop_toBottomOf="@+id/asdasd" />
 </androidx.constraintlayout.widget.ConstraintLayout>

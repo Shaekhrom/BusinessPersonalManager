@@ -7,54 +7,62 @@
     android:background="@color/black">
 
     <TextView
-        android:id="@+id/textViewTituloE"
+        android:id="@+id/tituloChatsCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="36dp"
         android:text="Chats"
         android:textColor="#FDD835"
-        android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="161dp" />
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@+id/volverCT"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewOptionsCM"
+        android:id="@+id/ajustesChatsCT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
         android:layout_marginTop="52dp"
         android:text="⚙️"
         android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="272dp" />
+        app:layout_constraintStart_toEndOf="@+id/tituloChatsCT"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewAddCM"
+        android:id="@+id/agnadirChatCT"
         android:layout_width="44dp"
         android:layout_height="48dp"
         android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
         android:text="➕"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="351dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/chatList"
+        android:id="@+id/chatListCT"
         android:layout_width="377dp"
         android:layout_height="561dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloE" />
+        app:layout_constraintTop_toBottomOf="@+id/volverCT" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/volverCT"
         android:layout_width="73dp"
         android:layout_height="70dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="38dp"
         android:text="↩️"
         android:textSize="48sp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="38dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
