@@ -3,163 +3,145 @@ package com.barbacil.main;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
 import connections.Conexion;
-import connections.UserInsertCallback;
+import connections.UserFetchCallback;
+import objectClasses.Estatica;
 import objectClasses.Usuario;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 
 public class MainActivity extends AppCompatActivity {
+    Conexion supabaseClient = new Conexion();
 
-    // Declaración de variables
-    private final String supabaseUrl = "https://vlbsmlsjguviymvrzeqe.supabase.co";
-    private final String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsYnNtbHNqZ3V2aXltdnJ6ZXFlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMDUzMDU3NywiZXhwIjoyMDI2MTA2NTc3fQ.SbdvAkaVbxXUgH7txb0x5Cnci4wMpyfSK6zqTq_Dqz4";
-    Conexion supabaseClient = new Conexion(supabaseUrl, apiKey);
-
-    Button botonRegistro, botonTest, botonLogin;
-    Intent intentRegistro, intentLogin;
-
-
-    EditText editTextEmail, editTextcontrasegna;
-
-    public static String idUsuarioFinal;
-    static Usuario usuarioAuxiliar;
+    Button botonIniciarSesion, botonRegistrarse, botonTest;
+    EditText emailET, contrasegnaET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         HideUI.setImmersiveMode(this);
 
-        // Asociamos variable con botón por id
-        botonRegistro = findViewById(R.id.registerButtonMain);
-        botonLogin = findViewById(R.id.botonLogin);
-
-        //asociamos editTexts con sus strings
-        editTextEmail = findViewById(R.id.email);
-
-        editTextcontrasegna = findViewById(R.id.contrasegna);
-
-
-
-        // Test
-        botonTest = findViewById(R.id.test);
-
-        botonTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pingDatabaseAsync();
-            }
-        });
-
-
-
-        // Configuración del listener del registro (se activa al hacer click)
-        botonRegistro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Creamos intent para ir a otra actividad
-                intentRegistro = new Intent(MainActivity.this, RegisterActivity.class);
-
-                // Inicia la actividad de registro
-                startActivity(intentRegistro);
-            }
-        });
-
-
         ////////////////////////////////////////////////////////////////////////////////////////////
-        // Configuración del listener del login (se activa al hacer click)
-        botonLogin.setOnClickListener(new View.OnClickListener() {
+        //(Iniciar sesion 1/2)- Inicio de sesion y establecemos usuario estatico
+        botonIniciarSesion= findViewById(R.id.botonLogin);
+        emailET = findViewById(R.id.emailLogin);
+        contrasegnaET = findViewById(R.id.contrasegnaLogin);
+
+        botonIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Obtener el email y la contraseña de los EditText
-                String email = editTextEmail.getText().toString();
-                String contrasegna = editTextcontrasegna.getText().toString();
+                String email = emailET.getText().toString();
+                String contrasegna = contrasegnaET.getText().toString();
 
-                usuarioAuxiliar = new Usuario(email, contrasegna);
-
-
-
-                // Crear un nuevo hilo para realizar la operación de inicio de sesion
-                new Thread(new Runnable() {
+                // Llamar al método obtenerUsuarioPorCredenciales de Usuario
+                Usuario.obtenerUsuarioPorCredenciales(email, contrasegna, new UserFetchCallback() {
                     @Override
-                    public void run() {
-                        // Llamar al método de inicio de sesión en la clase Conexion
-                        idUsuarioFinal = Conexion.obtenerIdUsuario(email,contrasegna);
-                        boolean inicioSesionExitoso = supabaseClient.iniciarSesion(email, contrasegna);
+                    public void onUserFetched(Usuario usuario) {
+                        Estatica.setUsuarioEstatico(usuario);
+                        Toast.makeText(MainActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // Iniciar sesion si ha devuelto true
-                                if (inicioSesionExitoso) {
+                        if(Estatica.getUsuarioEstatico().getIdEmpresa().equals("0")){
+                            Intent intent = new Intent(MainActivity.this, CompanySelectorActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
+                            startActivity(intent);
+                        }
 
-                                    //si el trigger es igual a false, (no empresa), lo lleva al selector de empresas, sino a la user page
-                                    if(!Conexion.empresaTrigger()){
-
-                                        Intent intent = new Intent(MainActivity.this, CompanySelectorActivity.class);
-                                        startActivity(intent);
-                                    }else{
-
-                                        Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
-                                        startActivity(intent);
-                                    }
-
-                                } else {
-                                    // Mostrar un mensaje de error si el inicio de sesión fallo
-                                    Toast.makeText(MainActivity.this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
                     }
-                }).start();
+
+                    @Override
+                    public void onUserFetchFailure(String errorMessage) {
+                        Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-    }
-
-    ///////////////////////////////////////////////////////////////
-    //comprobar disponibilidad de la bbdd
-    private void pingDatabaseAsync() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        executor.execute(() -> {
-            // Operación de red en un hilo secundario
-            final boolean isAvailable = supabaseClient.pingDatabase();
-
-            handler.post(() -> {
-                // Actualizar UI en el hilo principal
-                if (isAvailable) {
-                    Toast.makeText(MainActivity.this, "La base de datos esta disponible", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "La base de datos no esta disponible", Toast.LENGTH_SHORT).show();
-                }
-            });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //(Registrarse 1/3)-Registrarse
+        botonRegistrarse= findViewById(R.id.botonRegistroMain);
+        botonRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
         });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //(Test 1/2)-Llama a la clase interna TestConexionClass
+        botonTest= findViewById(R.id.botonTest);
+        botonTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new TestConexionClass(MainActivity.this).execute();
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
     }
-    ///////////////////////////////////////////////////////////////
 
-    public static Usuario conseguirUsuario(){
-        return usuarioAuxiliar;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //(Test 2/2)-Clase para probar la conexion a la BBDD
+    private static class TestConexionClass extends AsyncTask<Void, Void, Boolean> {
+        private WeakReference<MainActivity> activityReference;
+
+        TestConexionClass(MainActivity activity) {
+            activityReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            MainActivity activity = activityReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return false;
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(activity.supabaseClient.getSupabaseUrl() + "/rest/v1/usuario?select=*&limit=1")
+                    .addHeader("apikey", activity.supabaseClient.getApiKey())
+                    .build();
+            try (okhttp3.Response response = client.newCall(request).execute()) {
+                return response.isSuccessful();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean servidorDisponible) {
+            MainActivity activity = activityReference.get();
+            if (activity == null || activity.isFinishing()) {
+                return;
+            }
+
+
+            if (servidorDisponible) {
+                Toast.makeText(activity, "Servidor disponible", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "Servidor no disponible", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
-
-
-
+    ////////////////////////////////////////////////////////////////////////////////////////////
 }

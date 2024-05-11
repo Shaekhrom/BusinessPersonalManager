@@ -4,8 +4,7 @@
     <!-- permisos para la base de datos -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BusinessPersonalManager"
         tools:targetApi="31">
+        <activity
+            android:name=".EventosActivity"
+            android:exported="false" />
         <activity
             android:name=".AdminPageActivity"
             android:exported="false" />

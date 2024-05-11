@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasegna" />
 
     <Button
-        android:id="@+id/botonCrearEmpresa"
+        android:id="@+id/botonCrearEmpresaJE"
         android:layout_width="236dp"
         android:layout_height="48dp"
         android:layout_marginStart="87dp"

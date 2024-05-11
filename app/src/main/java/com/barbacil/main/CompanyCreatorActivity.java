@@ -10,79 +10,110 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import connections.Conexion;
+import connections.EmpresaIdCallback;
+import connections.EmpresaInsertCallback;
+import connections.UsuarioUpdateCallback;
 import objectClasses.Empresa;
+import objectClasses.Estatica;
 import objectClasses.Usuario;
 
 public class CompanyCreatorActivity extends AppCompatActivity {
+    Conexion supabaseClient = new Conexion();
 
-    Button volverCE, buttonCrearEmpresa;
-    Intent volverAtras,intentUserPage;
+    Button buttonCrearEmpresa, buttonVolverCE;
 
-    EditText nombreEmpresaET, contrasegnaEmpresaCE, sectorEmpresaCE, detallesEmpresaCE;
-
-    private final String supabaseUrl = "https://vlbsmlsjguviymvrzeqe.supabase.co";
-    private final String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsYnNtbHNqZ3V2aXltdnJ6ZXFlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMDUzMDU3NywiZXhwIjoyMDI2MTA2NTc3fQ.SbdvAkaVbxXUgH7txb0x5Cnci4wMpyfSK6zqTq_Dqz4";
-    Conexion supabaseClient = new Conexion(supabaseUrl, apiKey);
+    EditText nombreET, contrasegnaET, sectorET, detallesET;
+    String nombreEmpresa,contrasegnaEmpresa,sectorEmpresa,detallesEmpresa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_creator);
-
         HideUI.setImmersiveMode(this);
 
-        volverCE = findViewById(R.id.buttonVolverCE);
-
-        /////////////////////////////////////////////////////////////////////////
-        //metodo al pulsar el boton volver, vuelve a selector de empresas
-        volverCE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                volverAtras = new Intent(CompanyCreatorActivity.this, CompanySelectorActivity.class);
-                startActivity(volverAtras);
-            }
-        });
-        /////////////////////////////////////////////////////////////////////////
-
-        /////////////////////////////////////////////////////////////////////////
-        //metodo crear empresa
-
-        //asignamos variables por id
-        buttonCrearEmpresa = findViewById(R.id.buttonCrearEmpresa);
-
-        nombreEmpresaET = findViewById(R.id.nombreEmpresaET);
-        contrasegnaEmpresaCE = findViewById(R.id.contrasegnaEmpresaCE);
-        sectorEmpresaCE = findViewById(R.id.sectorEmpresaCE);
-        detallesEmpresaCE = findViewById(R.id.detallesEmpresaCE);
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //(Crear empresa 2/3)-Crear empresa
+        buttonCrearEmpresa= findViewById(R.id.buttonCrearEmpresa);
+        nombreET = findViewById(R.id.nombreEmpresaET);
+        contrasegnaET = findViewById(R.id.contrasegnaEmpresaCE);
+        sectorET = findViewById(R.id.sectorEmpresaCE);
+        detallesET = findViewById(R.id.detallesEmpresaCE);
 
         buttonCrearEmpresa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String contenidoNombre = nombreEmpresaET.getText().toString();
-                String contenidoContrasegna = contrasegnaEmpresaCE.getText().toString();
-                String contenidoSector = sectorEmpresaCE.getText().toString();
-                String contenidoDetalles = detallesEmpresaCE.getText().toString();
+                // Obtener los datos de la empresa de los EditText
+                String nombreEmpresa = nombreET.getText().toString();
+                String contrasegnaEmpresa = contrasegnaET.getText().toString();
+                String sectorEmpresa = sectorET.getText().toString();
+                String detallesEmpresa = detallesET.getText().toString();
 
-                Empresa empresa = new Empresa(contenidoNombre, contenidoContrasegna, contenidoSector,contenidoDetalles);
+                // Crear un objeto Empresa con los datos obtenidos
+                Empresa empresa = new Empresa(nombreEmpresa, contrasegnaEmpresa, sectorEmpresa, detallesEmpresa);
 
-                supabaseClient.insertEmpresa(contenidoNombre, contenidoContrasegna, contenidoSector, contenidoDetalles, isSuccess -> {
-                    runOnUiThread(() -> { // Asegurándonos de que el Toast se muestre en el hilo principal
-                        if (isSuccess) {
-                            Toast.makeText(CompanyCreatorActivity.this, "Empresa creada con éxito", Toast.LENGTH_SHORT).show();
-                            intentUserPage = new Intent(CompanyCreatorActivity.this, UserPageActivity.class);
-                            startActivity(intentUserPage);
+                // Llamar al método insertarEmpresa de la clase Empresa
+                Empresa.insertarEmpresa(empresa, new EmpresaInsertCallback() {
+                    @Override
+                    public void onCompleted(boolean success) {
+                        // La inserción de la empresa ha finalizado
+                        if (success) {
+
+                            Toast.makeText(CompanyCreatorActivity.this, "Empresa creada exitosamente", Toast.LENGTH_SHORT).show();
+                            // Llamar al método obtenerIdEmpresa de la clase Empresa
+                            Empresa.obtenerIdEmpresa(nombreEmpresa, contrasegnaEmpresa, new EmpresaIdCallback() {
+                                @Override
+                                public void onIdFetched(String idEmpresa) {
+                                    Usuario.actualizarIdEmpresa(Estatica.getUsuarioEstatico().getEmail(), Estatica.getUsuarioEstatico().getContrasegna(), idEmpresa, new UsuarioUpdateCallback() {
+                                        @Override
+                                        public void onUpdateCompleted(boolean success) {
+                                            // La actualización del ID de empresa ha finalizado
+                                            if (success) {
+                                                // La actualización fue exitosa
+                                                Toast.makeText(CompanyCreatorActivity.this, "ID de empresa actualizado exitosamente", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(CompanyCreatorActivity.this, UserPageActivity.class);
+                                                startActivity(intent);
+                                            } else {
+                                                // La actualización falló
+                                                Toast.makeText(CompanyCreatorActivity.this, "Error al actualizar el ID de empresa", Toast.LENGTH_SHORT).show();
+                                                // Realizar acciones adicionales si es necesario
+                                            }
+                                        }
+                                    });
+
+                                }
+
+                                @Override
+                                public void onIdFetchFailure(String errorMessage) {
+                                    Toast.makeText(CompanyCreatorActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
                         } else {
-                            Toast.makeText(CompanyCreatorActivity.this, "Error al crear una empresa", Toast.LENGTH_SHORT).show();
+                            // La inserción falló
+                            Toast.makeText(CompanyCreatorActivity.this, "Error al crear la empresa", Toast.LENGTH_SHORT).show();
+                            // Realizar acciones adicionales si es necesario
                         }
-                    });
+                    }
                 });
-
-
             }
         });
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
-        /////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //Volver
+        buttonVolverCE= findViewById(R.id.buttonVolverCE);
+        buttonVolverCE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CompanyCreatorActivity.this, CompanySelectorActivity.class);
+                startActivity(intent);
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
 
     }
 }

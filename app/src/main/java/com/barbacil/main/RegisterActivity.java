@@ -17,102 +17,88 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import connections.UserInsertCallback;
+import objectClasses.Estatica;
 import objectClasses.Usuario;
 import connections.Conexion;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    Conexion supabaseClient = new Conexion();
     Button botonVolver, botonRegistrarse;
-    Intent intentVolver;
     EditText emailET, nombreET, contrasegnaET, edadET;
-    RadioGroup grupoGenero;
-    RadioButton radioButton;
-    String opcionGenero;
+    String email, nombre, contrasegna,edad;
+    int edadNumerica;
+    RadioGroup generoRadioGroup;
+    RadioButton generoRadioButton;
+    private Handler handler;
 
-    Usuario usuario;
-
-
-
-    private final String supabaseUrl = "https://vlbsmlsjguviymvrzeqe.supabase.co";
-    private final String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsYnNtbHNqZ3V2aXltdnJ6ZXFlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcxMDUzMDU3NywiZXhwIjoyMDI2MTA2NTc3fQ.SbdvAkaVbxXUgH7txb0x5Cnci4wMpyfSK6zqTq_Dqz4";
-    Conexion supabaseClient = new Conexion(supabaseUrl, apiKey);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        handler = new Handler(Looper.getMainLooper());
         HideUI.setImmersiveMode(this);
 
-        //seccion boton volver//
-        // asociamos variable con boton por id
-        botonVolver = findViewById(R.id.backButtonRegister);
-
-        // configuracion del listener para el boton volver (vuelve a la actividad principal)
-        botonVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // creamos intent para ir a otra actividad
-                intentVolver = new Intent(RegisterActivity.this, MainActivity.class);
-
-                // Inicia la actividad de registro
-                startActivity(intentVolver);
-            }
-        });
-        ///////////////////////////////////////////////
-
-        //seccion boton registrarse (comprueba que todos los campos han sido rellenados correctamente y manda peticion al servidor//
-        // asociamos variables con elementos por id
-        botonRegistrarse = findViewById(R.id.registerButton);
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //(Registrarse 2/3)-Registrarse
+        botonRegistrarse= findViewById(R.id.botonRegistrarseRegister);
         emailET = findViewById(R.id.emailETregister);
         nombreET = findViewById(R.id.nameETregister);
         contrasegnaET = findViewById(R.id.passwordETregister);
         edadET = findViewById(R.id.ageETregister);
+        edad = edadET.getText().toString();
+        generoRadioGroup = findViewById(R.id.genderRadioGroup);
 
-        //configuracion del listener para comprobar si esta correcto y enviar peticion al servidor
         botonRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String contenidoEmail = emailET.getText().toString();
-                String contenidoNombre = nombreET.getText().toString();
-                String contenidoContrasegna = contrasegnaET.getText().toString();
-                String contenidoEdadString = edadET.getText().toString();
-                int contenidoEdad = Integer.parseInt(contenidoEdadString);
-                usuario = new Usuario(contenidoEmail, contenidoNombre, contenidoContrasegna,contenidoEdad,opcionGenero);
 
-                supabaseClient.insertUser("0", contenidoEmail, contenidoNombre, contenidoContrasegna, contenidoEdad, opcionGenero, false, 0, 0, isSuccess -> {
-                    runOnUiThread(() -> { // Asegurándonos de que el Toast se muestre en el hilo principal
-                        if (isSuccess) {
-                            Toast.makeText(RegisterActivity.this, "Usuario insertado con éxito", Toast.LENGTH_SHORT).show();
+                email = emailET.getText().toString();
+                nombre = nombreET.getText().toString();
+                contrasegna = contrasegnaET.getText().toString();
+                edad = edadET.getText().toString();
+                edadNumerica = Integer.parseInt(edad);
+                int selectedRadioButtonId = generoRadioGroup.getCheckedRadioButtonId();
+                generoRadioButton = findViewById(selectedRadioButtonId);
+                String genero = generoRadioButton.getText().toString();
+
+                // Creamos un nuevo usuario
+                Usuario usuario = new Usuario("0", email, nombre, contrasegna, edadNumerica, genero, false, 0.0,0.0);
+                Estatica.setUsuarioEstatico(usuario);
+
+                // Llamamos al método insertarUsuarioEnBaseDeDatos con el callback
+                Usuario.insertarUsuarioEnBaseDeDatos(usuario, new UserInsertCallback() {
+                    @Override
+                    public void onCompleted(boolean success) {
+                        if (success) {
+                            // La inserción del usuario fue exitosa
+                            // Aquí puedes realizar acciones adicionales si es necesario
+                            Intent intent = new Intent(RegisterActivity.this, CompanySelectorActivity.class);
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(RegisterActivity.this, "Error al insertar usuario", Toast.LENGTH_SHORT).show();
+                            // La inserción del usuario falló
+                            Toast.makeText(RegisterActivity.this, "Error al insertar usuario en la base de datos.", Toast.LENGTH_SHORT).show();
                         }
-                    });
+                    }
                 });
-
-
             }
         });
-        /////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
-        //seccion radiogroup, convierte el genero elegido en un String//
-        // asociamos variables con elementos por id
-        grupoGenero = findViewById(R.id.genderRadioGroup);
 
-        //configuracion del listener para transformar en string la eleccion al pulsarla
-        grupoGenero.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //Volver
+        botonVolver= findViewById(R.id.backButtonRegister);
+        botonVolver.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                radioButton = findViewById(checkedId);
-                opcionGenero = radioButton.getText().toString();
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
-        //////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
 
     }
-
-
-
-
 }
