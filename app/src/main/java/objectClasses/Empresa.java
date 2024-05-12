@@ -88,7 +88,7 @@ public class Empresa {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    ////(Crear empresa 3/5)-Insertar empresa
+    ////(Crear empresa 3/6)-Insertar empresa
     public static void insertarEmpresa(Empresa empresa, EmpresaInsertCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 
@@ -139,7 +139,7 @@ public class Empresa {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //(Crear empresa 4/5)obtener id empresa
+    //(Crear empresa 4/6)obtener id empresa
     public static void obtenerIdEmpresa(String nombreEmpresa, String contrasegnaEmpresa, EmpresaIdCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 

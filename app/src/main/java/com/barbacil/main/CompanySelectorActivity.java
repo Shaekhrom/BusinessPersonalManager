@@ -75,7 +75,7 @@ public class CompanySelectorActivity extends AppCompatActivity {
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        //(Crear empresa 1/5)-Crear empresa
+        //(Crear empresa 1/6)-Crear empresa
         botonCrearEmpresaJE= findViewById(R.id.botonCrearEmpresaJE);
         botonCrearEmpresaJE.setOnClickListener(new View.OnClickListener() {
             @Override

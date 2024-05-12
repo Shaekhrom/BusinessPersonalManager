@@ -32,7 +32,7 @@ public class CompanyCreatorActivity extends AppCompatActivity {
         HideUI.setImmersiveMode(this);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
-        //(Crear empresa 2/5)-Crear empresa
+        //(Crear empresa 2/6)-Crear empresa
         buttonCrearEmpresa= findViewById(R.id.buttonCrearEmpresa);
         nombreET = findViewById(R.id.nombreEmpresaET);
         contrasegnaET = findViewById(R.id.contrasegnaEmpresaCE);
@@ -66,12 +66,24 @@ public class CompanyCreatorActivity extends AppCompatActivity {
                                     Usuario.actualizarIdEmpresa(Estatica.getUsuarioEstatico().getEmail(), Estatica.getUsuarioEstatico().getContrasegna(), idEmpresa, new UsuarioUpdateCallback() {
                                         @Override
                                         public void onUpdateCompleted(boolean success) {
-                                            // La actualización del ID de empresa ha finalizado
                                             if (success) {
-                                                // La actualización fue exitosa
                                                 Toast.makeText(CompanyCreatorActivity.this, "ID de empresa actualizado exitosamente", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(CompanyCreatorActivity.this, UserPageActivity.class);
-                                                startActivity(intent);
+                                                Usuario.actualizarAdmin(Estatica.getUsuarioEstatico().getEmail(), Estatica.getUsuarioEstatico().getContrasegna(), new UsuarioUpdateCallback() {
+                                                    @Override
+                                                    public void onUpdateCompleted(boolean success) {
+                                                        if(success) {
+                                                            Usuario usuarioAdmin = Estatica.getUsuarioEstatico();
+                                                            usuarioAdmin.setEsAdmin(true);
+
+                                                            Estatica.setUsuarioEstatico(usuarioAdmin);
+                                                            Intent intent = new Intent(CompanyCreatorActivity.this, UserPageActivity.class);
+                                                            startActivity(intent);
+                                                        }else{
+                                                            Toast.makeText(CompanyCreatorActivity.this, "Error al establecer Usuario como Administrador", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
+
                                             } else {
                                                 // La actualización falló
                                                 Toast.makeText(CompanyCreatorActivity.this, "Error al actualizar el ID de empresa", Toast.LENGTH_SHORT).show();

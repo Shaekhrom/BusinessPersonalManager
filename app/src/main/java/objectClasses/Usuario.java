@@ -269,7 +269,7 @@ public class Usuario {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    //(Crear empresa 5/5) y (Unirse a empresa 3/3)Actualizar idempresa en la tabla usuario
+    //(Crear empresa 5/6) y (Unirse a empresa 3/3)Actualizar idempresa en la tabla usuario
     public static void actualizarIdEmpresa(String email, String contrasena, String nuevoIdEmpresa, UsuarioUpdateCallback callback) {
         handler = new Handler(Looper.getMainLooper());
 
@@ -309,11 +309,53 @@ public class Usuario {
             }
         }).start();
     }
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //(Crear empresa 6/6) y ctualizar idempresa en la tabla usuario
+    public static void actualizarAdmin(String email, String contrasena, UsuarioUpdateCallback callback) {
+        handler = new Handler(Looper.getMainLooper());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    JSONObject json = new JSONObject();
+                    json.put("esadmin", true);
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+                    Request request = new Request.Builder()
+                            .url(supabaseClient.getSupabaseUrl() + "/rest/v1/usuario?email=eq." + email + "&contrasena=eq." + contrasena)
+                            .addHeader("apikey", supabaseClient.getApiKey())
+                            .patch(body)  // Cambiado a método patch
+                            .build();
+
+                    // Mensajes de depuración adicionales
+                    Log.d("HTTP_DEBUG", "Enviando solicitud HTTP para actualizar ID de empresa...");
+                    Log.d("HTTP_DEBUG", "URL de la solicitud: " + request.url().toString());
+                    Log.d("HTTP_DEBUG", "Cuerpo de la solicitud JSON: " + json.toString());
+
+                    try (Response response = client.newCall(request).execute()) {
+                        Log.d("HTTP_DEBUG", "Código de estado de la respuesta: " + response.code());
+                        if (response.isSuccessful()) {
+                            // La actualización fue exitosa
+                            handler.post(() -> callback.onUpdateCompleted(true));
+                        } else {
+                            // La actualización falló
+                            handler.post(() -> callback.onUpdateCompleted(false));
+                        }
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                    handler.post(() -> callback.onUpdateCompleted(false));
+                }
+            }
+        }).start();
+    }
 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
 }

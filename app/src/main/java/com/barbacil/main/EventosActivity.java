@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import objectClasses.Estatica;
+import objectClasses.Usuario;
+
 public class EventosActivity extends AppCompatActivity {
-    TextView volverEVTV;
+    TextView volverEVTV,agnadirEventosEVTV;
     Intent intent;
 
     @Override
@@ -30,6 +34,23 @@ public class EventosActivity extends AppCompatActivity {
 
                 // Inicia la actividad de eventos
                 startActivity(intent);
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //Añadir un evento
+        agnadirEventosEVTV = findViewById(R.id.agnadirEventosEVTV);
+        agnadirEventosEVTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Usuario usuario = Estatica.getUsuarioEstatico();
+                if(usuario.isEsAdmin()){
+                    intent = new Intent(EventosActivity.this, AgnadirEventoActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(EventosActivity.this, "Necesitas ser Administrador para crear eventos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
