@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,21 +15,36 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import connections.EventoInsertCallback;
+import connections.EventoDeleteCallback;
+import objectClasses.Estatica;
+import objectClasses.Evento;
 
 public class AgnadirEventoActivity extends AppCompatActivity {
-    Button agnadirEventoBotonVolver;
-    EditText agnadirEventoFechaEventoDate;
+    Button agnadirEventoBotonVolver, agnadirEventoBotonAgnadir, botonBorrarEventoGE;
+    EditText agnadirEventoNombreEventoET, agnadirEventoDetallesET, agnadirEventoFechaEventoDate, borrarEventoGEET;
     DatePickerDialog datePickerDialog;
+    Date fechaEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_agnadir_evento);
         HideUI.setImmersiveMode(this);
+
+        agnadirEventoNombreEventoET = findViewById(R.id.agnadirEventoNombreEventoET);
+        agnadirEventoDetallesET = findViewById(R.id.agnadirEventoDetallesET);
+
         //datepicker para la fecha
         agnadirEventoFechaEventoDate = findViewById(R.id.agnadirEventoFechaEventoDate);
         agnadirEventoFechaEventoDate.setOnClickListener(v -> showDatePickerDialog());
+
+        borrarEventoGEET = findViewById(R.id.borrarEventoGEET);
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Volver
@@ -41,8 +57,61 @@ public class AgnadirEventoActivity extends AppCompatActivity {
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
-    }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //agnadir evento
+        agnadirEventoBotonAgnadir= findViewById(R.id.agnadirEventoBotonAgnadir);
+        agnadirEventoBotonAgnadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Creamos objeto evento
+                String nombreEvento = agnadirEventoNombreEventoET.getText().toString();
+                String detallesEvento = agnadirEventoDetallesET.getText().toString();
+                String fechaEvento = agnadirEventoFechaEventoDate.getText().toString();
+                Evento evento = new Evento(nombreEvento, detallesEvento, fechaEvento, Estatica.getUsuarioEstatico().getIdEmpresa());
+
+                // Insertar el evento en la base de datos
+                Evento.insertarEvento(evento, new EventoInsertCallback() {
+                    @Override
+                    public void onEventoInserted(boolean success) {
+                        if (success) {
+                            // El evento se insertó con éxito
+                            Toast.makeText(AgnadirEventoActivity.this, "Evento añadido correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Hubo un error al insertar el evento
+                            Toast.makeText(AgnadirEventoActivity.this, "Error al añadir el evento", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //borrar evento
+        botonBorrarEventoGE= findViewById(R.id.botonBorrarEventoGE);
+        botonBorrarEventoGE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nombreABorrar = borrarEventoGEET.getText().toString();
+
+                Evento.borrarEventoPorNombreYEmpresa(nombreABorrar, Estatica.getUsuarioEstatico().getIdEmpresa(), new EventoDeleteCallback() {
+                    @Override
+                    public void onEventoDeleted(boolean success) {
+                        if (success) {
+                            // El evento se borró exitosamente
+                            Toast.makeText(AgnadirEventoActivity.this, "Evento borrado correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Hubo un error al borrar el evento
+                            Toast.makeText(AgnadirEventoActivity.this, "Error al borrar el método", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////
     //metodo para el datePicker
     private void showDatePickerDialog() {
 
@@ -65,4 +134,5 @@ public class AgnadirEventoActivity extends AppCompatActivity {
         // Muestra el DatePickerDialog
         datePickerDialog.show();
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////
 }

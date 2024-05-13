@@ -298,7 +298,7 @@ public class Usuario {
                             // La actualización fue exitosa
                             handler.post(() -> callback.onUpdateCompleted(true));
                         } else {
-                            // La actualización falló
+                            // La actualización fallo
                             handler.post(() -> callback.onUpdateCompleted(false));
                         }
                     }
