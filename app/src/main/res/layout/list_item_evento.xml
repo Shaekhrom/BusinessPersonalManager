@@ -10,8 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre: "
-        android:textSize="16sp"
+        android:textSize="23sp"
         android:textStyle="bold"
+        android:textColor="#FDD835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -19,8 +20,9 @@
         android:id="@+id/textViewNombreEvento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="23sp"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewNombreTitulo"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -30,17 +32,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha: "
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="#8A8989"
+        android:textSize="23sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewNombreEvento"/>
+        app:layout_constraintTop_toBottomOf="@id/textViewNombreEvento" />
 
     <TextView
         android:id="@+id/textViewFechaEvento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
+        android:textSize="23sp"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewFechaTitulo"
         app:layout_constraintTop_toTopOf="@id/textViewFechaTitulo"
@@ -51,8 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Detalles: "
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
+        android:textSize="23sp"
+        android:textColor="#8A8989"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewFechaTitulo"/>
 
@@ -61,7 +63,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewDetallesTitulo"
         app:layout_constraintTop_toTopOf="@id/textViewDetallesTitulo"

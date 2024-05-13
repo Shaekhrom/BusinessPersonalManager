@@ -19,41 +19,30 @@
 
     <TextView
         android:id="@+id/agnadirEventosEVTV"
-        android:layout_width="44dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="16dp"
-        android:text="➕"
+        android:layout_width="59dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="40dp"
+        android:text="⚙️"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/listaDeEventosEVTV"
-        android:layout_width="375dp"
-        android:layout_height="598dp"
+        android:layout_width="346dp"
+        android:layout_height="528dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/volverEVTV"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textViewOptionsEVTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="52dp"
-        android:text="⚙️"
-        android:textSize="34sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewTituloEVTV"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.363" />
 
     <TextView
         android:id="@+id/textViewTituloEVTV"
