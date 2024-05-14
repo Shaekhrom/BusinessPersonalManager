@@ -24,7 +24,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="107dp"
         android:layout_marginTop="45dp"
-        android:text="Fecha: 04/05/2024"
         android:textAlignment="center"
 
         android:textColor="#FFFFFF"
@@ -38,7 +37,6 @@
         android:layout_height="45dp"
         android:layout_marginStart="104dp"
         android:layout_marginTop="33dp"
-        android:text="Hora: 18:35"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
