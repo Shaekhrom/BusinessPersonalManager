@@ -17,6 +17,12 @@
         android:theme="@style/Theme.BusinessPersonalManager"
         tools:targetApi="31">
         <activity
+            android:name=".DetallesCorreoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EnviarCorreoActivity"
+            android:exported="false" />
+        <activity
             android:name=".AgnadirEventoActivity"
             android:exported="false" />
         <activity
@@ -26,16 +32,13 @@
             android:name=".PuntuacionActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".CorreoActivity"
             android:exported="false" />
         <activity
             android:name=".JornadaActivity"
             android:exported="false" />
         <activity
             android:name=".EventosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdminPageActivity"
             android:exported="false" />
         <activity
             android:name=".UserPageActivity"

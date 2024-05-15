@@ -4,18 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class UserPageActivity extends AppCompatActivity {
 
-    Button botonEventos, botonJornada,botonChat,botonPuntuacion,botonAjustes,botonSalir;
+    Button botonEventos, botonJornada,botonChat,botonPuntuacion,botonSalir;
     Intent intent;
 
 
@@ -63,7 +57,7 @@ public class UserPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Creamos intent para ir a otra actividad
-                intent = new Intent(UserPageActivity.this, ChatActivity.class);
+                intent = new Intent(UserPageActivity.this, CorreoActivity.class);
 
                 // Inicia la actividad de eventos
                 startActivity(intent);
@@ -86,20 +80,6 @@ public class UserPageActivity extends AppCompatActivity {
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        //ir a ajustes
-        botonAjustes = findViewById(R.id.botonAjustes);
-        botonAjustes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Creamos intent para ir a otra actividad
-                intent = new Intent(UserPageActivity.this, AjustesActivity.class);
-
-                // Inicia la actividad de eventos
-                startActivity(intent);
-            }
-        });
-        ////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //salir de la app

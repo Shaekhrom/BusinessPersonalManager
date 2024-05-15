@@ -40,7 +40,7 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="13dp"
         android:backgroundTint="@color/white"
-        android:text="💬Chat"
+        android:text="📧Correo"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,19 +58,6 @@
         android:textSize="34sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botonChat" />
-
-    <Button
-        android:id="@+id/botonAjustes"
-        android:layout_width="280dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="17dp"
-        android:backgroundTint="@color/white"
-        android:text="⚙️Ajustes"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonPuntuacion" />
 
     <TextView
         android:id="@+id/textViewTitulo"
