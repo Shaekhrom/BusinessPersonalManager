@@ -36,7 +36,7 @@ public class GestionarPuntuacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gestionar_puntuacion);
-
+        HideUI.setImmersiveMode(this);
 
 
 

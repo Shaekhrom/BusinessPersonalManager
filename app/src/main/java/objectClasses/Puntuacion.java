@@ -4,11 +4,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+import connections.ComentarioCallback;
 import connections.Conexion;
 import connections.PuntuacionInsertCallback;
 import connections.PuntuacionUpdateCallback;
@@ -177,4 +179,47 @@ public class Puntuacion {
         }).start();
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+// Obtener comentario por email
+    public static void obtenerComentarioPorEmail(String email, ComentarioCallback callback) {
+        handler = new Handler(Looper.getMainLooper());
+
+        new Thread(() -> {
+            final String TAG = "HTTP_DEBUG";
+            final String CONTENT_TYPE_JSON = "application/json; charset=utf-8";
+            final String HEADER_API_KEY = "apikey";
+            final String HEADER_CONTENT_TYPE = "Content-Type";
+
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(supabaseClient.getSupabaseUrl() + "/rest/v1/puntuacion?select=comentario&email=eq." + email)
+                        .addHeader(HEADER_API_KEY, supabaseClient.getApiKey())
+                        .addHeader(HEADER_CONTENT_TYPE, CONTENT_TYPE_JSON)
+                        .build();
+
+                Log.d(TAG, "Enviando solicitud HTTP para obtener comentario por email...");
+
+                try (Response response = client.newCall(request).execute()) {
+                    if (response.isSuccessful()) {
+                        String responseData = response.body().string();
+                        JSONArray jsonArray = new JSONArray(responseData);
+                        JSONObject jsonObject = jsonArray.getJSONObject(0);
+                        String comentario = jsonObject.getString("comentario");
+                        Log.d(TAG, "Comentario obtenido: " + comentario);
+                        handler.post(() -> callback.onComentarioObtenido(comentario));
+                    } else {
+                        Log.d(TAG, "Solicitud HTTP fallida: " + response.code());
+                        handler.post(() -> callback.onComentarioObtenido(null));
+                    }
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                handler.post(() -> callback.onComentarioObtenido(null));
+            }
+        }).start();
+    }
+////////////////////////////////////////////////////////////////////////////////////////
+
 }
