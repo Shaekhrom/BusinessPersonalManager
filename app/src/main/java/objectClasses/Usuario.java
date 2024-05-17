@@ -372,4 +372,47 @@ public class Usuario {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    //actualiza la puntuacion de un usuario por email
+public static void actualizarPuntuacionPorEmail(String email, double nuevaPuntuacion, UsuarioUpdateCallback callback) {
+    handler = new Handler(Looper.getMainLooper());
+
+    new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                JSONObject json = new JSONObject();
+                json.put("puntuacion", nuevaPuntuacion);
+                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+                Request request = new Request.Builder()
+                        .url(supabaseClient.getSupabaseUrl() + "/rest/v1/usuario?puntuacion=eq." + nuevaPuntuacion + "&email=eq." + email)
+                        .addHeader("apikey", supabaseClient.getApiKey())
+                        .patch(body)  // Cambiado a método patch
+                        .build();
+
+                // Mensajes de depuración adicionales
+                Log.d("HTTP_DEBUG", "Enviando solicitud HTTP para actualizar puntuación por email...");
+                Log.d("HTTP_DEBUG", "URL de la solicitud: " + request.url().toString());
+                Log.d("HTTP_DEBUG", "Cuerpo de la solicitud JSON: " + json.toString());
+
+                try (Response response = client.newCall(request).execute()) {
+                    Log.d("HTTP_DEBUG", "Código de estado de la respuesta: " + response.code());
+                    if (response.isSuccessful()) {
+                        // La actualización fue exitosa
+                        handler.post(() -> callback.onUpdateCompleted(true));
+                    } else {
+                        // La actualización fallo
+                        handler.post(() -> callback.onUpdateCompleted(false));
+                    }
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                handler.post(() -> callback.onUpdateCompleted(false));
+            }
+        }
+    }).start();
+}
+
+
 }

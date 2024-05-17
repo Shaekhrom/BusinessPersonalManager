@@ -20,35 +20,57 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textNombre2"
+        android:id="@+id/emojiPuntuacionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="44dp"
         android:text="🙂 🌟🌟🌟🌟⭐ 4/5"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloPuntuacion" />
 
     <TextView
-        android:id="@+id/textViewTitulo"
+        android:id="@+id/textViewTituloPuntuacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="85dp"
         android:text="Puntuación"
         android:textColor="@color/color_dorado"
         android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_width="340dp"
-        android:layout_height="315dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="35dp"
+    <TextView
+        android:id="@+id/detallesPuntuacionTV"
+        android:layout_width="319dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="46dp"
+        android:background="@color/cardview_dark_background"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNombre2" />
+        app:layout_constraintTop_toBottomOf="@+id/emojiPuntuacionTV" />
+
+    <Button
+        android:id="@+id/botonGestionarPuntuacion"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="32dp"
+        android:text="Gestionar"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detallesPuntuacionTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

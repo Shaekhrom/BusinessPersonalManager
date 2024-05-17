@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BusinessPersonalManager</string>
+    <string-array name="spinnerGestionarPuntuacion">
+        <item>0 estrellas</item>
+        <item>1 estrellas</item>
+        <item>2 estrellas</item>
+        <item>3 estrellas</item>
+        <item>4 estrellas</item>
+        <item>5 estrellas</item>
+    </string-array>
 </resources>

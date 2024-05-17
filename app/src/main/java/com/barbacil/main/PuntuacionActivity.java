@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import objectClasses.Estatica;
+
 public class PuntuacionActivity extends AppCompatActivity {
-    Button botonVolverPT;
+    Button botonVolverPT, botonGestionarPuntuacion;
     Intent intent;
+    TextView emojiPuntuacionTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,52 @@ public class PuntuacionActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_puntuacion);
         HideUI.setImmersiveMode(this);
+
+        emojiPuntuacionTV = findViewById(R.id.emojiPuntuacionTV);
+
+        int opcion = (int) Estatica.getUsuarioEstatico().getPuntuacion();
+
+        switch(opcion) {
+            case 0:
+                emojiPuntuacionTV.setText("Puntuacion: 0/5");
+                break;
+            case 1:
+                emojiPuntuacionTV.setText("Puntuacion: 1/5");
+                break;
+            case 2:
+                emojiPuntuacionTV.setText("Puntuacion: 2/5");
+                break;
+            case 3:
+                emojiPuntuacionTV.setText("Puntuacion: 3/5");
+                break;
+            case 4:
+                emojiPuntuacionTV.setText("Puntuacion: 4/5");
+                break;
+            case 5:
+                emojiPuntuacionTV.setText("Puntuacion: 5/5");
+                break;
+            default:
+                System.out.println("Opción no válida");
+                break;
+        }
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        //ir a gestion
+        botonGestionarPuntuacion = findViewById(R.id.botonGestionarPuntuacion);
+        botonGestionarPuntuacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Creamos intent para ir a otra actividad
+                intent = new Intent(PuntuacionActivity.this, GestionarPuntuacion.class);
+
+                // Inicia la actividad de eventos
+                startActivity(intent);
+            }
+        });
+        ////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //Volver
