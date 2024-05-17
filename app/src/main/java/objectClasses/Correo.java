@@ -2,6 +2,8 @@ package objectClasses;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -23,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Correo implements Serializable {
+public class Correo implements Parcelable {
     static Conexion supabaseClient = new Conexion();
     private static Handler handler;
 
@@ -39,6 +41,39 @@ public class Correo implements Serializable {
         this.mensaje = mensaje;
         this.titulomensaje = titulomensaje;
     }
+
+    protected Correo(Parcel in) {
+        correoemisor = in.readString();
+        correoreceptor = in.readString();
+        mensaje = in.readString();
+        titulomensaje = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(correoemisor);
+        dest.writeString(correoreceptor);
+        dest.writeString(mensaje);
+        dest.writeString(titulomensaje);
+    }
+
+    // Campo CREATOR que implementa la interfaz Parcelable.Creator
+    public static final Creator<Correo> CREATOR = new Creator<Correo>() {
+        @Override
+        public Correo createFromParcel(Parcel in) {
+            return new Correo(in);
+        }
+
+        @Override
+        public Correo[] newArray(int size) {
+            return new Correo[size];
+        }
+    };
 
     public String getIdcorreo() {
         return idcorreo;

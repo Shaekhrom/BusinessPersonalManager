@@ -6,34 +6,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".DetallesCorreoActivity">
-
-    <TextView
-        android:id="@+id/remitenteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remitente:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/asuntoTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Asunto:"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/remitenteTextView" />
+    tools:context=".DetallesCorreoActivity"
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/mensajeTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="362dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:text="Mensaje:"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/asuntoTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/mensajeDetalleCorreoTVDC" />
+
+    <TextView
+        android:id="@+id/remitenteTextView"
+        android:layout_width="362dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Remitente:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enviadoPorTVDC" />
+
+    <TextView
+        android:id="@+id/asuntoTextView"
+        android:layout_width="362dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Asunto:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asuntoTVDC" />
+
+    <TextView
+        android:id="@+id/asuntoTVDC"
+        android:layout_width="362dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:text="Asunto:"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/remitenteTextView" />
+
+    <TextView
+        android:id="@+id/mensajeDetalleCorreoTVDC"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Mensaje:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asuntoTextView" />
+
+    <TextView
+        android:id="@+id/tituloDetallesCorreo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles del correo"
+        android:textColor="#FDD835"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="45dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/enviadoPorTVDC"
+        android:layout_width="362dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:background="@color/white"
+        android:text="Enviado por:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloDetallesCorreo" />
+
+    <Button
+        android:id="@+id/botonVolverDetallesCorreo"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="84dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
