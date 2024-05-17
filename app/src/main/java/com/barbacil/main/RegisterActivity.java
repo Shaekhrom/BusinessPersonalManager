@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String genero = generoRadioButton.getText().toString();
 
                 // Creamos un nuevo usuario
-                Usuario usuario = new Usuario("0", email, nombre, contrasegna, edadNumerica, genero, false, 0.0,0.0);
+                Usuario usuario = new Usuario("0", email, nombre, contrasegna, edadNumerica, genero, false, 0.0,0);
                 Estatica.setUsuarioEstatico(usuario);
 
                 // Llamamos al método insertarUsuarioEnBaseDeDatos con el callback

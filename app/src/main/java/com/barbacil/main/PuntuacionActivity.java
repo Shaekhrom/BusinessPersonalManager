@@ -18,6 +18,7 @@ public class PuntuacionActivity extends AppCompatActivity {
     Button botonVolverPT, botonGestionarPuntuacion;
     Intent intent;
     TextView emojiPuntuacionTV;
+    int opcion = Estatica.getUsuarioEstatico().getPuntuacion();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +28,6 @@ public class PuntuacionActivity extends AppCompatActivity {
         HideUI.setImmersiveMode(this);
 
         emojiPuntuacionTV = findViewById(R.id.emojiPuntuacionTV);
-
-        int opcion = (int) Estatica.getUsuarioEstatico().getPuntuacion();
 
         switch(opcion) {
             case 0:

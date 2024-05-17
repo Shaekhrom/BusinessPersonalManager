@@ -33,14 +33,12 @@ public class Usuario {
     private String genero;
     private boolean esAdmin;
     private double salario;
-    private double puntuacion;
+    private int puntuacion;
     private static Handler handler;
 
 
     //constructors
-
-
-    public Usuario(String idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
+    public Usuario(String idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, int puntuacion) {
         this.idEmpresa = idEmpresa;
         this.email = email;
         this.nombre = nombre;
@@ -52,26 +50,15 @@ public class Usuario {
         this.puntuacion = puntuacion;
     }
 
-    public Usuario(String id, String idEmpresa, String email, String nombre, String contrasegna, int edad, String genero, boolean esAdmin, double salario, double puntuacion) {
-        this.id = id;
-        this.idEmpresa = idEmpresa;
-        this.email = email;
-        this.nombre = nombre;
-        this.contrasegna = contrasegna;
-        this.edad = edad;
-        this.genero = genero;
-        this.esAdmin = esAdmin;
-        this.salario = salario;
-        this.puntuacion = puntuacion;
-    }
+
 
     //toString
+
 
     @Override
     public String toString() {
         return "Usuario{" +
-                "id=" + id +
-                ", idEmpresa=" + idEmpresa +
+                "idEmpresa='" + idEmpresa + '\'' +
                 ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", contrasegna='" + contrasegna + '\'' +
@@ -82,7 +69,6 @@ public class Usuario {
                 ", puntuacion=" + puntuacion +
                 '}';
     }
-
 
     //gettersAndSetters
     public String getId() {
@@ -157,11 +143,11 @@ public class Usuario {
         this.salario = salario;
     }
 
-    public double getPuntuacion() {
+    public int getPuntuacion() {
         return puntuacion;
     }
 
-    public void setPuntuacion(double puntuacion) {
+    public void setPuntuacion(int puntuacion) {
         this.puntuacion = puntuacion;
     }
 
@@ -250,7 +236,7 @@ public class Usuario {
 
                                 // Crear un objeto Usuario con los datos obtenidos
                                 Usuario usuario = new Usuario(
-                                        userData.getString("id"),
+
                                         userData.getString("idempresa"),
                                         userData.getString("email"),
                                         userData.getString("nombre"),
@@ -259,8 +245,9 @@ public class Usuario {
                                         userData.getString("genero"),
                                         userData.getBoolean("esadmin"),
                                         userData.getDouble("salario"),
-                                        userData.getDouble("puntuacion")
+                                        userData.getInt("puntuacion")
                                 );
+                                Log.d("Usuario_Debug", "Usuario obtenido: " + usuario.toString());
 
                                 // Llamar al método onUserFetched del callback con el objeto Usuario
                                 handler.post(() -> callback.onUserFetched(usuario));
@@ -374,7 +361,7 @@ public class Usuario {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     //actualiza la puntuacion de un usuario por email
-public static void actualizarPuntuacionPorEmail(String email, double nuevaPuntuacion, UsuarioUpdateCallback callback) {
+public static void actualizarPuntuacionPorEmail(String email, int nuevaPuntuacion, UsuarioUpdateCallback callback) {
     handler = new Handler(Looper.getMainLooper());
 
     new Thread(new Runnable() {
@@ -386,7 +373,7 @@ public static void actualizarPuntuacionPorEmail(String email, double nuevaPuntua
                 json.put("puntuacion", nuevaPuntuacion);
                 RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
                 Request request = new Request.Builder()
-                        .url(supabaseClient.getSupabaseUrl() + "/rest/v1/usuario?puntuacion=eq." + nuevaPuntuacion + "&email=eq." + email)
+                        .url(supabaseClient.getSupabaseUrl() + "/rest/v1/usuario?&email=eq." + email)
                         .addHeader("apikey", supabaseClient.getApiKey())
                         .patch(body)  // Cambiado a método patch
                         .build();

@@ -28,12 +28,17 @@ public class GestionarPuntuacion extends AppCompatActivity {
     int puntuacion;
     Intent intent;
 
+    String idEmpresa = Estatica.getUsuarioEstatico().getIdEmpresa();
+
     EditText emailUsuarioGestionarPuntuacion, detallesGestionarPuntuacioon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_gestionar_puntuacion);
+
+
+
 
         Spinner mySpinner = findViewById(R.id.spinnerGestionarPuntuacion);
         // Crear un ArrayAdapter usando la lista de opciones y un diseño de spinner por defecto
@@ -84,13 +89,17 @@ public class GestionarPuntuacion extends AppCompatActivity {
 
         ////////////////////////////////////////////////////////////////////////////////////////////
         //guardar cambios en la BBDD
+        botonGuardarCambiosGestionarPuntuacion= findViewById(R.id.botonGuardarCambiosGestionarPuntuacion);
+
+        emailUsuarioGestionarPuntuacion = findViewById(R.id.emailUsuarioGestionarPuntuacion);
+        detallesGestionarPuntuacioon = findViewById(R.id.detallesGestionarPuntuacioon);
         botonGuardarCambiosGestionarPuntuacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailUsuarioGestionarPuntuacion.getText().toString();
                 String comentario = detallesGestionarPuntuacioon.getText().toString();
 
-                Puntuacion puntuacionAInsertar = new Puntuacion(email, puntuacion, comentario, Estatica.getEmpresaEstatica().getId());
+                Puntuacion puntuacionAInsertar = new Puntuacion(email, puntuacion, comentario, idEmpresa);
                 Puntuacion.insertarPuntuacionEnBaseDeDatos(puntuacionAInsertar, new PuntuacionInsertCallback() {
                     @Override
                     public void onCompleted(boolean success) {

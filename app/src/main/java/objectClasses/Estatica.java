@@ -5,8 +5,8 @@ package objectClasses;
  */
 public class Estatica {
 
-    static Usuario usuarioEstatico = null;
-    static Empresa empresaEstatica = null;
+    static Usuario usuarioEstatico;
+    static Empresa empresaEstatica;
 
     public static void setUsuarioEstatico(Usuario usuarioEstatico) {
         Estatica.usuarioEstatico = usuarioEstatico;

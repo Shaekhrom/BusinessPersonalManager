@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, CompanySelectorActivity.class);
                             startActivity(intent);
                         }else{
+
                             Intent intent = new Intent(MainActivity.this, UserPageActivity.class);
                             startActivity(intent);
                         }
