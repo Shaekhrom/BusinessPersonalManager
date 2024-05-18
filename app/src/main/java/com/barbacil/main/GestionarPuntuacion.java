@@ -54,10 +54,8 @@ public class GestionarPuntuacion extends AppCompatActivity {
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Obtener el elemento seleccionado
                 String selectedItem = parent.getItemAtPosition(position).toString();
 
-                // Ejecutar código en función del elemento seleccionado
                 switch (selectedItem) {
                     case "0 estrellas":
                         puntuacion = 0;

@@ -34,25 +34,25 @@ public class PuntuacionActivity extends AppCompatActivity {
 
         switch(opcion) {
             case 0:
-                emojiPuntuacionTV.setText("Puntuacion: 0/5");
+                emojiPuntuacionTV.setText("☆☆☆☆☆ 0/5");
                 break;
             case 1:
-                emojiPuntuacionTV.setText("Puntuacion: 1/5");
+                emojiPuntuacionTV.setText("★☆☆☆☆ 1/5");
                 break;
             case 2:
-                emojiPuntuacionTV.setText("Puntuacion: 2/5");
+                emojiPuntuacionTV.setText("★★☆☆☆ 2/5");
                 break;
             case 3:
-                emojiPuntuacionTV.setText("Puntuacion: 3/5");
+                emojiPuntuacionTV.setText("★★★☆☆ 3/5");
                 break;
             case 4:
-                emojiPuntuacionTV.setText("Puntuacion: 4/5");
+                emojiPuntuacionTV.setText("★★★★☆ 4/5");
                 break;
             case 5:
-                emojiPuntuacionTV.setText("Puntuacion: 5/5");
+                emojiPuntuacionTV.setText("★★★★★ 5/5");
                 break;
             default:
-                System.out.println("Opción no válida");
+                emojiPuntuacionTV.setText("Sin puntuación recibida aún");
                 break;
         }
 
