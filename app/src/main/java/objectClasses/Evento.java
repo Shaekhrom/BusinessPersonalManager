@@ -155,7 +155,7 @@ public class Evento {
                             JSONObject eventoData = jsonArray.getJSONObject(i);
                             String nombreEvento = eventoData.getString("nombre");
                             String detallesEvento = eventoData.getString("detalles");
-                            String fecha = eventoData.getString("fecha"); // Obtener la fecha como String
+                            String fecha = eventoData.getString("fecha");
                             String idEmpresaEvento = eventoData.getString("idEmpresa");
 
                             Evento evento = new Evento(nombreEvento, detallesEvento, fecha, idEmpresaEvento);
