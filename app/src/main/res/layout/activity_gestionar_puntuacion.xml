@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/emailUsuarioGestionarPuntuacion"
-        android:layout_width="279dp"
+        android:layout_width="322dp"
         android:layout_height="49dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="18dp"
@@ -43,6 +43,8 @@
         android:text=""
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailusuarioTituloGestionarPuntuacion" />
 
@@ -103,6 +105,7 @@
         android:layout_marginStart="26dp"
         android:layout_marginTop="24dp"
         android:textColor="@color/white"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seleccionPuntuacionGestionarPuntuacion" />
 
@@ -117,6 +120,7 @@
         android:text=""
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        android:background="@color/gris"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detallesGestionarPuntuacionTitulo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

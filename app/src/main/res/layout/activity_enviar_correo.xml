@@ -73,14 +73,14 @@
         android:id="@+id/botonVolverABandejaEntrada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="153dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="35dp"
         android:backgroundTint="@color/white"
         android:text="Volver"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonEnviarCorreo" />
 
     <EditText
         android:id="@+id/etReceptor"
@@ -92,7 +92,9 @@
         android:hint="Introduce el e-mail"
         android:inputType="text"
         android:textColor="#FFFFFF"
+        android:textAlignment="center"
         android:textSize="16sp"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoEmailRemitente" />
 
@@ -107,6 +109,8 @@
         android:inputType="text"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -125,6 +129,8 @@
         android:singleLine="false"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:background="@color/gris"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoCueroCorreoTV" />
 </androidx.constraintlayout.widget.ConstraintLayout>

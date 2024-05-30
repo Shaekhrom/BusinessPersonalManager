@@ -9,8 +9,8 @@
 
     <EditText
         android:id="@+id/contrasegnaEmpresaCE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="12dp"
         android:ems="10"
@@ -18,6 +18,8 @@
         android:inputType="text"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textContrasegna2" />
 
@@ -26,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="10dp"
         android:text="Sector de la empresa"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -35,15 +37,17 @@
 
     <EditText
         android:id="@+id/sectorEmpresaCE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="13dp"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="Sector"
         android:inputType="text"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSector" />
 
@@ -52,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:text="Contraseña de la empresa:"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -73,12 +77,14 @@
 
     <EditText
         android:id="@+id/nombreEmpresaET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="9dp"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:hint="Nombre"
+        android:textAlignment="center"
         android:inputType="text"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
@@ -99,30 +105,27 @@
 
     <Button
         android:id="@+id/buttonCrearEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="27dp"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
         android:text="Crear empresa"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE" />
 
     <Button
         android:id="@+id/buttonVolverCE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginBottom="66dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
         android:text="Volver"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonCrearEmpresa"
-        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE" />
 
     <TextView
         android:id="@+id/textViewDetalles"
@@ -138,10 +141,11 @@
 
     <EditText
         android:id="@+id/detallesEmpresaCE"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="101dp"
         android:layout_marginStart="58dp"
         android:layout_marginTop="9dp"
+        android:background="@color/gris"
         android:ems="10"
         android:hint="Escribe una pequeña descripcion de tu empresa aqui"
         android:inputType="textMultiLine"
