@@ -69,7 +69,8 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "idEmpresa='" + idEmpresa + '\'' +
+                "id='" + id + '\'' +
+                ", idEmpresa='" + idEmpresa + '\'' +
                 ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", contrasegna='" + contrasegna + '\'' +

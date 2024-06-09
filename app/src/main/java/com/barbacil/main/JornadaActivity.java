@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,11 +14,13 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
 import connections.JornadaInsertCallback;
+import connections.JornadaListCallback;
 import connections.JornadaUpdateCallback;
 import connections.VerificacionCallback;
 import objectClasses.Estatica;
@@ -27,6 +30,8 @@ public class JornadaActivity extends AppCompatActivity {
     Button botonVolverRJ, botonRegistrarInicio,botonRegistrarFinal;
     Intent intent;
     TextView textViewHora, textViewFecha;
+
+    ImageView verTodasJornadas;
     Handler handlerFechaYHora;
 
     @Override
@@ -119,6 +124,24 @@ public class JornadaActivity extends AppCompatActivity {
             }
         });
         ////////////////////////////////////////////////////////////////////////////////////////////
+        //mostrar todas las jornadas por email
+        verTodasJornadas = findViewById(R.id.verTodasJornadas);
+        verTodasJornadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idusuario = Estatica.getUsuarioEstatico().getId();
+                Jornada.obtenerJornadasPorEmail(idusuario, new JornadaListCallback() {
+                    @Override
+                    public void onJornadaListReceived(ArrayList<Jornada> jornadasList) {
+                        Intent intent = new Intent(JornadaActivity.this, MostrarJornadasActivity.class);
+                        intent.putExtra("jornadasList", jornadasList);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+        ////////////////////
 
 
     }

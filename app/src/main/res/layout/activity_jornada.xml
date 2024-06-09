@@ -74,12 +74,22 @@
         android:layout_width="240dp"
         android:layout_height="70dp"
         android:layout_marginStart="84dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="81dp"
         android:backgroundTint="@color/white"
         android:text="Volver"
         android:textColor="@color/black"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonRegistrarFinal" />
+
+    <ImageView
+        android:id="@+id/verTodasJornadas"
+        android:layout_width="71dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="59dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewTituloJornada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

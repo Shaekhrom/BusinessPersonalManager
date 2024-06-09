@@ -2,13 +2,20 @@ package objectClasses;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import connections.Conexion;
 import connections.JornadaInsertCallback;
+import connections.JornadaListCallback;
 import connections.JornadaUpdateCallback;
 import connections.VerificacionCallback;
 import okhttp3.MediaType;
@@ -17,7 +24,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Jornada {
+public class Jornada implements Parcelable {
     static Conexion supabaseClient = new Conexion();
     private String idjornada;
     private String idusuario;
@@ -31,6 +38,28 @@ public class Jornada {
         this.horainicio = horainicio;
         this.horafinal = horafinal;
     }
+
+    // Constructor para Parcelable
+    protected Jornada(Parcel in) {
+        idjornada = in.readString();
+        idusuario = in.readString();
+        fecha = in.readString();
+        horainicio = in.readString();
+        horafinal = in.readString();
+    }
+
+    // Campo CREATOR para Parcelable
+    public static final Creator<Jornada> CREATOR = new Creator<Jornada>() {
+        @Override
+        public Jornada createFromParcel(Parcel in) {
+            return new Jornada(in);
+        }
+
+        @Override
+        public Jornada[] newArray(int size) {
+            return new Jornada[size];
+        }
+    };
 
     public String getIdjornada() {
         return idjornada;
@@ -203,8 +232,66 @@ public class Jornada {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////
 
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    //obtener jornadas por email de usuario
+    // En la clase Jornada
+    public static void obtenerJornadasPorEmail(String idusuario, JornadaListCallback callback) {
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        new Thread(() -> {
+            try {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(supabaseClient.getSupabaseUrl() + "/rest/v1/jornada?idusuario=eq." + idusuario)
+                        .addHeader("apikey", supabaseClient.getApiKey())
+                        .build();
+
+                Log.d("HTTP_DEBUG", "Enviando solicitud HTTP para obtener jornadas por email...");
+
+                try (Response response = client.newCall(request).execute()) {
+                    boolean success = response.isSuccessful();
+                    ArrayList<Jornada> jornadasList = new ArrayList<>();
+
+                    if (success) {
+                        String responseData = response.body().string();
+                        JSONArray jsonArray = new JSONArray(responseData);
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            Jornada jornada = new Jornada(
+                                    jsonObject.getString("idusuario"),
+                                    jsonObject.getString("fecha"),
+                                    jsonObject.getString("horainicio"),
+                                    jsonObject.getString("horafinal")
+                            );
+                            jornada.setIdjornada(jsonObject.getString("idjornada"));
+                            jornadasList.add(jornada);
+                        }
+                    } else {
+                        Log.d("HTTP_DEBUG", "Solicitud HTTP fallida: " + response.code());
+                    }
+
+                    handler.post(() -> callback.onJornadaListReceived(jornadasList));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                handler.post(() -> callback.onJornadaListReceived(new ArrayList<>()));
+            }
+        }).start();
+    }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idjornada);
+        dest.writeString(idusuario);
+        dest.writeString(fecha);
+        dest.writeString(horainicio);
+        dest.writeString(horafinal);
+    }
 }
