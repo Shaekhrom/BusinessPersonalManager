@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BusinessPersonalManager" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.BusinessPersonalManager" parent="Base.Theme.BusinessPersonalManager" />
+
+    //estilos personalizados
+
+    <style name="textoBlanco">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+</resources>

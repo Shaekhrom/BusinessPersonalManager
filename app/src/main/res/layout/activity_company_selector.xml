@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".CompanySelectorActivity">
+
+    <Button
+        android:id="@+id/botonVolverPT"
+        android:layout_width="236dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonCrearEmpresaJE" />
+
+    <TextView
+        android:id="@+id/textUnirse"
+        android:layout_width="330dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="49dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="Unirse a una empresa"
+        android:textColor="#FDD835"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="20dp"
+        android:text="Nombre de la empresa:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textUnirse" />
+
+    <EditText
+        android:id="@+id/nombreEmpresaUE"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNombre" />
+
+    <TextView
+        android:id="@+id/textContrasegna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="30dp"
+        android:text="Contraseña de la empresa:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmpresaUE" />
+
+    <EditText
+        android:id="@+id/contrasegnaEmpresaUE"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="text|textPassword"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textContrasegna" />
+
+    <Button
+        android:id="@+id/asdasd"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/white"
+        android:text="Unirse"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contrasegnaEmpresaUE" />
+
+    <Button
+        android:id="@+id/botonCrearEmpresaJE"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:text="Crear empresa"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asdasd" />
+</androidx.constraintlayout.widget.ConstraintLayout>

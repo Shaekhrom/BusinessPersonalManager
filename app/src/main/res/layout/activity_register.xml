@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">>
+
+    <TextView
+        android:id="@+id/emailRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="47dp"
+        android:text="E-Mail"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/textoBlanco"/>
+
+    <EditText
+        android:id="@+id/emailETregister"
+        style="@style/textoBlanco"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailRegister" />
+
+    <TextView
+        android:id="@+id/nameRegister"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="15dp"
+        android:text="Nombre"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailETregister" />
+
+    <TextView
+        android:id="@+id/passwordRegister"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="15dp"
+        android:text="Contraseña"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameETregister" />
+
+    <TextView
+        android:id="@+id/ageRegister"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="15dp"
+        android:text="Edad"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordETregister" />
+
+    <TextView
+        android:id="@+id/nameRegister4"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="15dp"
+        android:text="Género"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ageETregister" />
+
+    <EditText
+        android:id="@+id/nameETregister"
+        style="@style/textoBlanco"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRegister" />
+
+    <EditText
+        android:id="@+id/passwordETregister"
+        style="@style/textoBlanco"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegister" />
+
+    <Button
+        android:id="@+id/botonRegistrarseRegister"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="51dp"
+        android:backgroundTint="@color/white"
+        android:text="Registrarse"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/backButtonRegister"
+        app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
+
+    <Button
+        android:id="@+id/backButtonRegister"
+        style="@style/textoBlanco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="51dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
+
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="326dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.682"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRegister4">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            style="@style/textoBlanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Masc" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            style="@style/textoBlanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Fem" />
+
+        <RadioButton
+            android:id="@+id/radioButton6"
+            style="@style/textoBlanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otro" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/ageETregister"
+        style="@style/textoBlanco"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="number|numberDecimal"
+        android:background="@drawable/rounded_edittext"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ageRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

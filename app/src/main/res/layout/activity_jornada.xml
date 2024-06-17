@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/textViewTituloJornada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="59dp"
+        android:text="Jornada"
+        android:textColor="#FDD835"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="197dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="45dp"
+        android:textAlignment="center"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloJornada" />
+
+    <TextView
+        android:id="@+id/textViewHora"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="33dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFecha" />
+
+    <Button
+        android:id="@+id/botonRegistrarInicio"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="62dp"
+        android:backgroundTint="@color/white"
+        android:text="Registrar inicio"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHora" />
+
+    <Button
+        android:id="@+id/botonRegistrarFinal"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="27dp"
+        android:backgroundTint="@color/white"
+        android:text="Registrar final"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonRegistrarInicio" />
+
+    <Button
+        android:id="@+id/botonVolverRJ"
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="81dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonRegistrarFinal" />
+
+    <ImageView
+        android:id="@+id/verTodasJornadas"
+        android:layout_width="71dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="59dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewTituloJornada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

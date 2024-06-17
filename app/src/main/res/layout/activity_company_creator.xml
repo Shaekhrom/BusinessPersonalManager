@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".CompanyCreatorActivity">
+
+    <EditText
+        android:id="@+id/contrasegnaEmpresaCE"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textContrasegna2" />
+
+    <TextView
+        android:id="@+id/textSector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:text="Sector de la empresa"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contrasegnaEmpresaCE" />
+
+    <EditText
+        android:id="@+id/sectorEmpresaCE"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:hint="Sector"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSector" />
+
+    <TextView
+        android:id="@+id/textContrasegna2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="10dp"
+        android:text="Contraseña de la empresa:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombreEmpresaET" />
+
+    <TextView
+        android:id="@+id/textNombre2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="23dp"
+        android:text="Nombre de la empresa:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCrearEmpresa" />
+
+    <EditText
+        android:id="@+id/nombreEmpresaET"
+        android:layout_width="300dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:hint="Nombre"
+        android:textAlignment="center"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNombre2" />
+
+    <TextView
+        android:id="@+id/textCrearEmpresa"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="52dp"
+        android:text="Crear una empresa"
+        android:textColor="#FDD835"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCrearEmpresa"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        android:text="Crear empresa"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE" />
+
+    <Button
+        android:id="@+id/buttonVolverCE"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/buttonCrearEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/detallesEmpresaCE" />
+
+    <TextView
+        android:id="@+id/textViewDetalles"
+        android:layout_width="91dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="19dp"
+        android:text="Detalles:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sectorEmpresaCE" />
+
+    <EditText
+        android:id="@+id/detallesEmpresaCE"
+        android:layout_width="300dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/gris"
+        android:ems="10"
+        android:hint="Escribe una pequeña descripcion de tu empresa aqui"
+        android:inputType="textMultiLine"
+        android:maxLength="150"
+        android:maxLines="5"
+        android:minLines="2"
+        android:singleLine="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDetalles" />
+</androidx.constraintlayout.widget.ConstraintLayout>

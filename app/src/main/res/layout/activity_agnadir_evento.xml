@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgnadirEventoActivity"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/agnadirEventoTituloTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="69dp"
+        android:text="Gestionar eventos"
+        android:textColor="#FDD835"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/agnadirEventoNombreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="248dp"
+        android:text="Nombre del evento"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloEventoGE" />
+
+    <EditText
+        android:id="@+id/agnadirEventoNombreEventoET"
+        android:layout_width="322dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoNombreTV" />
+
+    <EditText
+        android:id="@+id/agnadirEventoDetallesET"
+        android:layout_width="322dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:minLines="2"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoDetallesTV" />
+
+    <Button
+        android:id="@+id/agnadirEventoBotonAgnadir"
+        android:layout_width="322dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="45dp"
+        android:backgroundTint="@color/white"
+        android:text="Añadir evento"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoFechaEventoDate" />
+
+    <EditText
+        android:id="@+id/agnadirEventoFechaEventoDate"
+        android:layout_width="322dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Selecciona una fecha"
+        android:inputType="none"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoFechaTV" />
+
+    <TextView
+        android:id="@+id/agnadirEventoDetallesTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="248dp"
+        android:text="Detalles del evento"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoNombreEventoET" />
+
+    <TextView
+        android:id="@+id/agnadirEventoFechaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="262dp"
+        android:text="Fecha del evento"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoDetallesET" />
+
+    <Button
+        android:id="@+id/agnadirEventoBotonVolver"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="81dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonBorrarEventoGE" />
+
+    <Button
+        android:id="@+id/botonBorrarEventoGE"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="45dp"
+        android:backgroundTint="@color/white"
+        android:text="Borrar evento"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/borrarEventoGEET" />
+
+    <TextView
+        android:id="@+id/tituloEventoGE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="132dp"
+        android:text="Añadir evento"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoTituloTV" />
+
+    <TextView
+        android:id="@+id/tituloEventoBorrarGE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="85dp"
+        android:text="Borrar evento (Por nombre)"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agnadirEventoBotonAgnadir" />
+
+    <EditText
+        android:id="@+id/borrarEventoGEET"
+        android:layout_width="322dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="45dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloEventoBorrarGE" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

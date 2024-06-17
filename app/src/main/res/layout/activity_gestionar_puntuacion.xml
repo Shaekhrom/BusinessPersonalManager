@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GestionarPuntuacion"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/tituloGestionarPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="51dp"
+        android:text="Gestionar puntuaciones"
+        android:textColor="#FDD835"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/emailusuarioTituloGestionarPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="34dp"
+        android:text="E-mail del ususario a gestionar:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloGestionarPuntuacion" />
+
+    <EditText
+        android:id="@+id/emailUsuarioGestionarPuntuacion"
+        android:layout_width="322dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailusuarioTituloGestionarPuntuacion" />
+
+    <TextView
+        android:id="@+id/seleccionPuntuacionGestionarPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="27dp"
+        android:text="Seleccionar puntuación"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailUsuarioGestionarPuntuacion" />
+
+    <TextView
+        android:id="@+id/detallesGestionarPuntuacionTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:text="Añadir detalles"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGestionarPuntuacion" />
+
+    <Button
+        android:id="@+id/botonGuardarCambiosGestionarPuntuacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="31dp"
+        android:backgroundTint="@color/white"
+        android:text="Guardar cambios"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detallesGestionarPuntuacioon" />
+
+    <Button
+        android:id="@+id/botonVolverGestionarPuntuacion"
+        android:layout_width="235dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="56dp"
+        android:backgroundTint="@color/white"
+        android:text="Volver"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerGestionarPuntuacion"
+        android:layout_width="322dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seleccionPuntuacionGestionarPuntuacion" />
+
+    <EditText
+        android:id="@+id/detallesGestionarPuntuacioon"
+        android:layout_width="326dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:background="@color/gris"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detallesGestionarPuntuacionTitulo" />
+</androidx.constraintlayout.widget.ConstraintLayout>
